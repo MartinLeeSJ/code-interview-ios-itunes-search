@@ -7,31 +7,42 @@
 
 import SwiftUI
 
+
+
 struct SearchView: View {
+    @Environment(\.isSearching) private var isSearching
+    @Environment(\.dismissSearch) private var dismissSearch
     @State private var query: String = ""
-    private let searchList: [String] = ["녹음기", "엠넷", "pitu", "의지의 히어로", "구글맵", "진에어", "grab"]
+    @State private var searchList: [String] = ["녹음기", "엠넷", "pitu", "의지의 히어로", "구글맵", "진에어", "grab"]
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading) {
-                Text("최근 검색어")
-                    .font(.title.bold())
-                List(searchList, id: \.self) { string in
-                    Button(string, action: {})
+                if !isSearching {
+                    Text("최근 검색어")
+                        .font(.title2.bold())
                 }
-                .listStyle(.plain)
-                .listItemTint(.blue)
+                List(searchList, id: \.self) {string in
+                    Button(string, action: { })
+                        .searchCompletion(string)
+                        .tint(.blue)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                }
             }
             .padding()
             .navigationTitle("검색")
-            .searchable(text: $query)
+            .listStyle(.plain)
+            .searchable(text: $query, prompt: "App Store")
             .searchSuggestions {
                 ForEach(searchList, id: \.self) { string in
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        Text(string)
-                    }
+                    Label(string, systemImage: "magnifyingglass")
+                        .tint(.black)
+                        .searchCompletion(string)
                 }
             }
+            .onSubmit(of: .search) {
+                print("Search is completed")
+            }
+            
         }
     }
 }
