@@ -11,6 +11,7 @@
 		5BDE83522A96058E006185E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83512A96058E006185E8 /* ContentView.swift */; };
 		5BDE83542A960591006185E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BDE83532A960591006185E8 /* Assets.xcassets */; };
 		5BDE83572A960591006185E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BDE83562A960591006185E8 /* Preview Assets.xcassets */; };
+		5BDE835E2A9622F0006185E8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE835D2A9622F0006185E8 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		5BDE83512A96058E006185E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BDE83532A960591006185E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BDE83562A960591006185E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5BDE835D2A9622F0006185E8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */,
 				5BDE83512A96058E006185E8 /* ContentView.swift */,
+				5BDE835D2A9622F0006185E8 /* SearchView.swift */,
 				5BDE83532A960591006185E8 /* Assets.xcassets */,
 				5BDE83552A960591006185E8 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BDE83522A96058E006185E8 /* ContentView.swift in Sources */,
+				5BDE835E2A9622F0006185E8 /* SearchView.swift in Sources */,
 				5BDE83502A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +281,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +316,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
