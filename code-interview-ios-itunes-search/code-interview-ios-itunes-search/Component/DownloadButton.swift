@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct DownloadButton<Style>: View where Style : PrimitiveButtonStyle {
-    let action: () -> Void
     let buttonStyle: Style
+    let text: String
+    let action: () -> Void
     
     
-    init(_ style: Style = .bordered, action: @escaping () -> Void) {
+    init(_ style: Style = .bordered, text: String = "받기", action: @escaping () -> Void) {
         self.buttonStyle = style
+        self.text = text
         self.action = action
     }
     
@@ -21,7 +23,7 @@ struct DownloadButton<Style>: View where Style : PrimitiveButtonStyle {
         Button {
             action()
         } label: {
-            Text("받기")
+            Text(text)
                 .font(.subheadline.bold())
                 .padding(.horizontal, 16)
         }

@@ -19,8 +19,8 @@ struct Application: Identifiable {
     var ipadScreenshotUrls: [String]
     var appleTvScreenshotUrls: [String]
     
-    var primaryGenreId: Int // primaryGenreId
-    var genreIds: [String]
+    var primaryGenreName: String 
+    var genres: [String]
     var languages: [String]
     var fileSizeBytes: String
     

@@ -20,8 +20,8 @@ extension Application: Decodable {
         case ipadScreenshotUrls
         case appletvScreenshotUrls
         
-        case primaryGenreId
-        case genreIds
+        case primaryGenreName
+        case genres
         case languages = "languageCodesISO2A"
         case fileSizeBytes
         
@@ -50,8 +50,8 @@ extension Application: Decodable {
         let rawIpadScreenshotUrls = try? values.decode([String].self, forKey: .ipadScreenshotUrls)
         let rawAppletvScreenshotUrls = try? values.decode([String].self, forKey: .appletvScreenshotUrls)
         
-        let rawPrimaryGenreId = try? values.decode(Int.self, forKey: .primaryGenreId)
-        let rawGenreIds = try? values.decode([String].self, forKey: .genreIds)
+        let rawPrimaryGenreName = try? values.decode(String.self, forKey: .primaryGenreName)
+        let rawGenres = try? values.decode([String].self, forKey: .genres)
         let rawLanguages = try? values.decode([String].self, forKey: .languages)
         let rawFileSizeBytes = try? values.decode(String.self, forKey: .fileSizeBytes)
         
@@ -75,8 +75,8 @@ extension Application: Decodable {
               let screenshotUrls = rawScreenshotUrls,
               let ipadScreenshotUrls = rawIpadScreenshotUrls,
               let appletvScreenshotUrls = rawAppletvScreenshotUrls,
-              let primaryGenreId = rawPrimaryGenreId,
-              let genreIds = rawGenreIds,
+              let primaryGenreName = rawPrimaryGenreName,
+              let genres = rawGenres,
               let languages = rawLanguages,
               let fileSizeBytes = rawFileSizeBytes,
               let contentAdvisoryRating = rawContentAdvisoryRating,
@@ -99,8 +99,8 @@ extension Application: Decodable {
         self.screenshotUrls = screenshotUrls
         self.ipadScreenshotUrls = ipadScreenshotUrls
         self.appleTvScreenshotUrls = appletvScreenshotUrls
-        self.primaryGenreId = primaryGenreId
-        self.genreIds = genreIds
+        self.primaryGenreName = primaryGenreName
+        self.genres = genres
         self.languages = languages
         self.fileSizeBytes = fileSizeBytes
         self.contentAdvisoryRating = contentAdvisoryRating
