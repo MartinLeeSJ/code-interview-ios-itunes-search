@@ -18,6 +18,7 @@ struct AppDetailView: View {
                     AppDetailHeader(app: app, iconSize: appIconSize)
                         .frame(height: appIconSize)
                     AppBriefInfoScroll(app: app)
+                    AppScreenShotsScroll()
                 }
                 .padding()
             }

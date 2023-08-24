@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct AppScreenShotsScroll: View {
+    var colors: [Color] = [.blue, .green, .red, .orange]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(alignment: .center, spacing: 30) {
+            ForEach(0..<colors.count, id: \.self) { i in
+                colors[i]
+                    .frame(width: 250, height: 400, alignment: .center)
+                    .cornerRadius(10)
+            }
+        }
+        .scrollingHStack(.center, items: colors.count, itemWidth: 250, spacing: 30)
+        
     }
 }
 
