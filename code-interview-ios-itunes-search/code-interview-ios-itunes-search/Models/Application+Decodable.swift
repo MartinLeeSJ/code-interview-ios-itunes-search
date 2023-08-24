@@ -14,7 +14,7 @@ extension Application: Decodable {
         case sellerName
         case description
         
-        case iconUrl = "artworkUrl100"
+        case iconUrl = "artworkUrl250"
         case url = "trackViewUrl"
         case screenshotUrls
         case ipadScreenshotUrls
