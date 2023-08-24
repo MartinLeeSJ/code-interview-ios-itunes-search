@@ -9,14 +9,17 @@ import SwiftUI
 
 struct SearchResultCell: View {
     var body: some View {
+        NavigationLink {
+            Text("test")
+        } label: {
         GeometryReader { geo in
             let width = geo.size.width
             let appIconSize = width / 6
             let gridSpacing: CGFloat = 8
             let gridCellWidth = (width - gridSpacing * 2) / 3
-            let gridCellHeight = gridCellWidth * 2
+            let gridCellHeight = gridCellWidth * 2.2
             
-            VStack {
+            VStack(spacing: 16) {
                 HStack(alignment: .center, spacing: 16) {
                     RoundedRectangle(cornerRadius: appIconSize / 4)
                         .aspectRatio(1, contentMode: .fit)
@@ -29,18 +32,12 @@ struct SearchResultCell: View {
                             .foregroundColor(.secondary)
                     }
                     Spacer()
-                    Button {
-                        
-                    } label: {
-                        Text("받기")
-                        .font(.headline)
-                            .padding(.horizontal, 16)
+                    
+                    DownloadButton {
+                      //ToDo
                     }
-                    .buttonBorderShape(.capsule)
-                    .buttonStyle(.bordered)
-
                 }
-           
+                
                 LazyVGrid(columns: .init(repeating: .init(.flexible(minimum: gridCellWidth), spacing: gridSpacing), count: 3)) {
                     ForEach(0..<3, id: \.self) { _ in
                         RoundedRectangle(cornerRadius: 10)
@@ -50,10 +47,14 @@ struct SearchResultCell: View {
             }
         }
     }
+    }
 }
 
 struct SearchResultCell_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultCell()
+        NavigationStack {
+            SearchResultCell()
+                .padding()
+        }
     }
 }
