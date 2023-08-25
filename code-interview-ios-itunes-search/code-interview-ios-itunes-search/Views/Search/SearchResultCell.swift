@@ -8,53 +8,84 @@
 import SwiftUI
 
 struct SearchResultCell: View {
+    let app: Application
+    
+    private var screenShotUrlsPrefix: [String] {
+        Array(app.screenshotUrls.prefix(upTo: 3))
+    }
+    
+    private let gridSpacing: CGFloat = 8
+    private let appIconWidth: CGFloat = 60
+    private let appIconRadius: CGFloat = 8
+    private let girdCellCornerRadius: CGFloat = 10
+    
     var body: some View {
         NavigationLink {
-            Text("test")
+            AppDetailView(app: app)
         } label: {
-        GeometryReader { geo in
-            let width = geo.size.width
-            let appIconSize = width / 6
-            let gridSpacing: CGFloat = 8
-            let gridCellWidth = (width - gridSpacing * 2) / 3
-            let gridCellHeight = gridCellWidth * 2.2
-            
-            VStack(spacing: 16) {
-                HStack(alignment: .center, spacing: 16) {
-                    RoundedRectangle(cornerRadius: appIconSize / 4)
-                        .aspectRatio(1, contentMode: .fit)
-                        .frame(width: appIconSize)
-                    VStack(alignment: .leading) {
-                        Text("제목")
-                            .font(.title3)
-                        Text("부제목")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
+        VStack(spacing: .spacing(multiplier: 2)) {
+            HStack(alignment: .center, spacing: .spacing(multiplier: 2)) {
+                AsyncImage(url: URL(string: app.iconUrl)!) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                        .cornerRadius(appIconRadius)
+                        .frame(width: appIconWidth)
                     
-                    DownloadButton {
-                      //ToDo
-                    }
+                } placeholder: {
+                    RoundedRectangle(cornerRadius: appIconRadius)
+                        .foregroundStyle(.thinMaterial)
+                        .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
+                        .frame(width: appIconWidth)
+                        .overlay {
+                            ProgressView()
+                        }
                 }
                 
-                LazyVGrid(columns: .init(repeating: .init(.flexible(minimum: gridCellWidth), spacing: gridSpacing), count: 3)) {
-                    ForEach(0..<3, id: \.self) { _ in
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(height: gridCellHeight)
+                
+                VStack(alignment: .leading) {
+                    Text(app.title)
+                        .font(.title3)
+                    Text(app.sellerName)
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                
+                DownloadButton {
+                    //ToDo
+                }
+            }
+            
+            LazyVGrid(columns: .init(repeating: .init(.flexible(), spacing: gridSpacing), count: 3)) {
+                ForEach(screenShotUrlsPrefix, id: \.self) { urlString in
+                    AsyncImage(url: URL(string: urlString)!) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(girdCellCornerRadius)
+                        
+                        
+                    } placeholder: {
+                        RoundedRectangle(cornerRadius: girdCellCornerRadius)
+                            .foregroundStyle(.thinMaterial)
+                            .aspectRatio(CGSize(width: 1, height: 2), contentMode: .fit)
                     }
                 }
             }
+            
         }
+        
     }
+            
+        
+    
     }
 }
 
 struct SearchResultCell_Previews: PreviewProvider {
+    
     static var previews: some View {
-        NavigationStack {
-            SearchResultCell()
-                .padding()
-        }
+        SearchResultCell(app: Application.sample)
     }
 }

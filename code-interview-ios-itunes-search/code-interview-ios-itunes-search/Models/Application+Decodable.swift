@@ -14,7 +14,7 @@ extension Application: Decodable {
         case sellerName
         case description
         
-        case iconUrl = "artworkUrl250"
+        case iconUrl = "artworkUrl512"
         case url = "trackViewUrl"
         case screenshotUrls
         case ipadScreenshotUrls
@@ -61,7 +61,7 @@ extension Application: Decodable {
         
         let rawVersion = try? values.decode(String.self, forKey: .version)
         let rawReleaseNotes = try? values.decode(String.self, forKey: .releaseNotes)
-        let rawCurrentVersionReleaseDate = try? values.decode(Date.self, forKey: .currentVersionReleaseDate)
+        let rawCurrentVersionReleaseDate = try? values.decode(String.self, forKey: .currentVersionReleaseDate)
         let rawMinimumOsVersion = try? values.decode(String.self, forKey: .minimumOsVersion)
         let rawSupportedDevices = try? values.decode([String].self, forKey: .supportedDevices)
         
@@ -90,6 +90,8 @@ extension Application: Decodable {
             throw ApplicationError.missingData
         }
         
+        
+        
         self.id = id
         self.title = title
         self.description = description
@@ -98,7 +100,7 @@ extension Application: Decodable {
         self.url = url
         self.screenshotUrls = screenshotUrls
         self.ipadScreenshotUrls = ipadScreenshotUrls
-        self.appleTvScreenshotUrls = appletvScreenshotUrls
+        self.appletvScreenshotUrls = appletvScreenshotUrls
         self.primaryGenreName = primaryGenreName
         self.genres = genres
         self.languages = languages
@@ -108,7 +110,7 @@ extension Application: Decodable {
         self.userRatingCount = userRatingCount
         self.version = version
         self.releaseNotes = releaseNotes
-        self.currentVersionReleaseDate = currentVersionReleaseDate
+        self.currentVersionReleaseDate = currentVersionReleaseDate.covertToIso8601Date() ?? Date.now
         self.minimumOsVersion = minimumOsVersion
         self.supportedDevices = supportedDevices
     }

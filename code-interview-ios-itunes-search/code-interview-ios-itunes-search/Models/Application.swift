@@ -13,7 +13,7 @@ enum Device: String {
     case appletv = "tv"
 }
 
-struct Application: Identifiable {
+struct Application: Identifiable, Hashable {
     var id: Int // trackId
     var title: String
     var description: String
@@ -23,7 +23,7 @@ struct Application: Identifiable {
     var url: String
     var screenshotUrls: [String]
     var ipadScreenshotUrls: [String]
-    var appleTvScreenshotUrls: [String]
+    var appletvScreenshotUrls: [String]
     
     var primaryGenreName: String 
     var genres: [String]
@@ -45,7 +45,7 @@ struct Application: Identifiable {
         var devices = [Device]()
         if !screenshotUrls.isEmpty { devices.append(.iphone)}
         if !ipadScreenshotUrls.isEmpty { devices.append(.ipad)}
-        if !appleTvScreenshotUrls.isEmpty { devices.append(.appletv)}
+        if !appletvScreenshotUrls.isEmpty { devices.append(.appletv)}
         return devices
     }
     

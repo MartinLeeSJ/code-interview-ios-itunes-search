@@ -12,6 +12,7 @@
 		5B38096C2A9871BA000D20D6 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096B2A9871BA000D20D6 /* ExpandableText.swift */; };
 		5B38096E2A988228000D20D6 /* AppReleaseNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096D2A988228000D20D6 /* AppReleaseNotes.swift */; };
 		5B3809702A98935D000D20D6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096F2A98935D000D20D6 /* SearchViewModel.swift */; };
+		5B3809722A98AB3B000D20D6 /* String+DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */; };
 		5BDE83502A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */; };
 		5BDE83522A96058E006185E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83512A96058E006185E8 /* ContentView.swift */; };
 		5BDE83542A960591006185E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BDE83532A960591006185E8 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		5B38096B2A9871BA000D20D6 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		5B38096D2A988228000D20D6 /* AppReleaseNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReleaseNotes.swift; sourceTree = "<group>"; };
 		5B38096F2A98935D000D20D6 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateFormat.swift"; sourceTree = "<group>"; };
 		5BDE834C2A96058E006185E8 /* code-interview-ios-itunes-search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "code-interview-ios-itunes-search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = code_interview_ios_itunes_searchApp.swift; sourceTree = "<group>"; };
 		5BDE83512A96058E006185E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */,
+				5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				5BDE83742A971809006185E8 /* Application+Decodable.swift in Sources */,
 				5B38096C2A9871BA000D20D6 /* ExpandableText.swift in Sources */,
 				5BDE836B2A96F048006185E8 /* DownloadButton.swift in Sources */,
+				5B3809722A98AB3B000D20D6 /* String+DateFormat.swift in Sources */,
 				5BDE83682A96EE9F006185E8 /* AppDetailHeader.swift in Sources */,
 				5BDE83762A972922006185E8 /* ApplicationError.swift in Sources */,
 			);

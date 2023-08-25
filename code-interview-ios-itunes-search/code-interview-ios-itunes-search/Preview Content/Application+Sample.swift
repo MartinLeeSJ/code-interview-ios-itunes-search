@@ -23,7 +23,7 @@ extension Application {
                                             "https://is3-ssl.mzstatic.com/image/thumb/PurpleSource125/v4/7a/d0/2c/7ad02cb5-da61-a395-a2f2-98248307b428/639ab713-edb6-404e-92a1-24eade9051e5_12.9_iPad_Pro_Fitness_2.PNG/552x414bb.png",
                                             "https://is5-ssl.mzstatic.com/image/thumb/PurpleSource115/v4/4c/93/b7/4c93b7b9-5561-9db6-ff6d-3737f5a49ed4/e994cc88-7b2d-4826-a433-d342e448719b_12.9_iPad_Pro_Fitness_3.PNG/552x414bb.png"
                                           ],
-                                          appleTvScreenshotUrls: [],
+                                          appletvScreenshotUrls: [],
                                           primaryGenreName: "건강 및 피트니스",
                                           genres: ["건강 및 피트니스"],
                                           languages: [
