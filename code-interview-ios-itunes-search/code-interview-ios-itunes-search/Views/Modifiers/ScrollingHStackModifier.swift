@@ -22,7 +22,7 @@ struct ScrollingHStackModifier: ViewModifier {
     var initialIndex: Int
     
     
-    init(snapMode: SnapMode, items: Int, itemWidth: CGFloat, itemSpacing: CGFloat = 16, initialIndex: Int = 0) {
+    init(snapMode: SnapMode, items: Int, itemWidth: CGFloat, itemSpacing: CGFloat = .spacing(multiplier: 2), initialIndex: Int = 0) {
         self.snapMode = snapMode
         self.items = items
         self.itemWidth = itemWidth
@@ -38,8 +38,9 @@ struct ScrollingHStackModifier: ViewModifier {
         // HStack의 프레임 x값이 0이 된다.
         // 이때 아이템의 너비와 화면 너비의 차의 절반만큼 오른쪽으로 다시 조정하면 첫번재 아이템이 가운데 정렬
         // 아이템 간격만큼 오른쪽으로 움직이면 아이템이 왼쪽 화면 여백 바로 뒤에 붙어있는 것처럼 보이게 된다.
+        let startingPointOffset = (contentWidth/2.0) - (screenWidth/2.0)
         let adjustmentOffset = snapMode == .center ? (screenWidth - itemWidth) / 2.0 : itemSpacing
-        let initialOffset = (contentWidth/2.0) - (screenWidth/2.0) + adjustmentOffset
+        let initialOffset = startingPointOffset + adjustmentOffset
         
         self._scrollOffset = State(initialValue: initialOffset)
         self._dragOffset = State(initialValue: 0)

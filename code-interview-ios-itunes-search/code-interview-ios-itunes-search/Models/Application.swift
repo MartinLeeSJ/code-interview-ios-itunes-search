@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum Device: String {
+    case iphone
+    case ipad
+    case appletv = "tv"
+}
+
 struct Application: Identifiable {
     var id: Int // trackId
     var title: String
@@ -33,6 +39,16 @@ struct Application: Identifiable {
     var currentVersionReleaseDate: Date
     var minimumOsVersion: String
     var supportedDevices: [String]
+    
+    ///  스크린샷이 있는 디바이스 배열
+    var screenshotDevices: [Device] {
+        var devices = [Device]()
+        if !screenshotUrls.isEmpty { devices.append(.iphone)}
+        if !ipadScreenshotUrls.isEmpty { devices.append(.ipad)}
+        if !appleTvScreenshotUrls.isEmpty { devices.append(.appletv)}
+        return devices
+    }
+    
 }
 
 

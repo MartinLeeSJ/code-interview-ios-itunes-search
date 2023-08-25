@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BriefInfoCell<M, B>: View where M : View, B : View {
+struct AppInfoBadge<M, B>: View where M : View, B : View {
     let top: String
     let middle: () -> M
     let bottom: () -> B
@@ -22,7 +22,7 @@ struct BriefInfoCell<M, B>: View where M : View, B : View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 8) {
+        VStack(alignment: .center, spacing: .spacing()) {
             Text(top)
                 .font(.caption)
             middle()
@@ -38,7 +38,7 @@ struct BriefInfoCell<M, B>: View where M : View, B : View {
     }
 }
 
-struct AppBriefInfoScroll: View {
+struct AppInfoBadgesScroll: View {
     let app: Application
     var body: some View {
         ScrollView(.horizontal) {
@@ -59,16 +59,16 @@ struct AppBriefInfoScroll: View {
     }
 }
 
-extension AppBriefInfoScroll {
+extension AppInfoBadgesScroll {
     private func userRatingString(_ rating: Double) -> String {
         let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 2
-        return formatter.string(from: rating as NSNumber) ?? "0.00"
+        formatter.maximumFractionDigits = 1
+        return formatter.string(from: rating as NSNumber) ?? "0.0"
     }
    
     @ViewBuilder
     func userRating(rating: Double, count: Int) -> some View {
-        BriefInfoCell(title: "\(count)개 의 평가") {
+        AppInfoBadge(title: "\(count)개 의 평가") {
             Text(userRatingString(rating))
         } bottom: {
             FiveStarRating(rating: Decimal(rating))
@@ -80,7 +80,7 @@ extension AppBriefInfoScroll {
     
     @ViewBuilder
     func contentAdvisoryRating(rating: String) -> some View {
-        BriefInfoCell(title: "연령") {
+        AppInfoBadge(title: "연령") {
             Text(rating)
         } bottom: {
             Text("세")
@@ -91,7 +91,7 @@ extension AppBriefInfoScroll {
     
     @ViewBuilder
     func sellerInfo(name: String) -> some View {
-        BriefInfoCell(title: "개발자") {
+        AppInfoBadge(title: "개발자") {
             Image(systemName: "person.crop.square")
         } bottom: {
             Text(name)
@@ -102,7 +102,7 @@ extension AppBriefInfoScroll {
     
     @ViewBuilder
     func languageInfo() -> some View {
-        BriefInfoCell(title: "언어") {
+        AppInfoBadge(title: "언어") {
             Text("KO")
         } bottom: {
             Text("한국어")
@@ -111,7 +111,7 @@ extension AppBriefInfoScroll {
 }
 
 
-extension AppBriefInfoScroll {
+extension AppInfoBadgesScroll {
     private var dividerHeight: CGFloat { 30 }
     
     var cellDivider: some View {
@@ -122,6 +122,6 @@ extension AppBriefInfoScroll {
 
 struct AppDetailHeaderScroll_Previews: PreviewProvider {
     static var previews: some View {
-        AppBriefInfoScroll(app: Application.sample)
+        AppInfoBadgesScroll(app: Application.sample)
     }
 }

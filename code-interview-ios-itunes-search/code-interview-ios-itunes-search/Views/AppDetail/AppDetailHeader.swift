@@ -18,7 +18,7 @@ struct AppDetailHeader: View {
     private var url: String { app.url }
     
     var body: some View {
-            HStack(alignment: .center, spacing: 16) {
+        HStack(alignment: .center, spacing: .spacing(multiplier: 2)) {
                 AppIcon(url: iconUrl, iconWidth: iconSize)
                 VStack(alignment: .leading) {
                     Text(title)
