@@ -7,24 +7,88 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B3809672A984E0C000D20D6 /* CGFloat+Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */; };
+		5B38096A2A9850CF000D20D6 /* AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809692A9850CF000D20D6 /* AppDescription.swift */; };
+		5B38096C2A9871BA000D20D6 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096B2A9871BA000D20D6 /* ExpandableText.swift */; };
+		5B38096E2A988228000D20D6 /* AppReleaseNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096D2A988228000D20D6 /* AppReleaseNotes.swift */; };
+		5B3809702A98935D000D20D6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096F2A98935D000D20D6 /* SearchViewModel.swift */; };
+		5B3809722A98AB3B000D20D6 /* String+DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */; };
 		5BDE83502A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */; };
 		5BDE83522A96058E006185E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83512A96058E006185E8 /* ContentView.swift */; };
 		5BDE83542A960591006185E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BDE83532A960591006185E8 /* Assets.xcassets */; };
 		5BDE83572A960591006185E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BDE83562A960591006185E8 /* Preview Assets.xcassets */; };
 		5BDE835E2A9622F0006185E8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE835D2A9622F0006185E8 /* SearchView.swift */; };
+		5BDE83612A9627C9006185E8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5BDE83602A9627C9006185E8 /* Alamofire */; };
+		5BDE83632A963AFB006185E8 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83622A963AFB006185E8 /* SearchResultCell.swift */; };
+		5BDE83652A96ED7B006185E8 /* AppDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83642A96ED7B006185E8 /* AppDetailView.swift */; };
+		5BDE83682A96EE9F006185E8 /* AppDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83672A96EE9F006185E8 /* AppDetailHeader.swift */; };
+		5BDE836B2A96F048006185E8 /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE836A2A96F048006185E8 /* DownloadButton.swift */; };
+		5BDE836D2A96FCF1006185E8 /* AppInfoBadgesScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE836C2A96FCF1006185E8 /* AppInfoBadgesScroll.swift */; };
+		5BDE83702A97007E006185E8 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE836F2A97007E006185E8 /* Application.swift */; };
+		5BDE83722A971458006185E8 /* AppResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83712A971457006185E8 /* AppResponse.swift */; };
+		5BDE83742A971809006185E8 /* Application+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83732A971809006185E8 /* Application+Decodable.swift */; };
+		5BDE83762A972922006185E8 /* ApplicationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83752A972922006185E8 /* ApplicationError.swift */; };
+		5BDE83802A973223006185E8 /* code_interview_ios_itunes_searchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE837F2A973223006185E8 /* code_interview_ios_itunes_searchTests.swift */; };
+		5BDE83862A9732CB006185E8 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83772A97316F006185E8 /* TestData.swift */; };
+		5BDE83882A97565B006185E8 /* Application+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83872A97565B006185E8 /* Application+Sample.swift */; };
+		5BDE838A2A976542006185E8 /* FiveStarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83892A976542006185E8 /* FiveStarRating.swift */; };
+		5BDE838C2A977302006185E8 /* IPhoneScreenShotsScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE838B2A977302006185E8 /* IPhoneScreenShotsScroll.swift */; };
+		5BDE838E2A977619006185E8 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE838D2A977619006185E8 /* AppIcon.swift */; };
+		5BDE83952A9782B2006185E8 /* ScrollingHStackModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83942A9782B2006185E8 /* ScrollingHStackModifier.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5BDE83812A973223006185E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BDE83442A96058E006185E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BDE834B2A96058E006185E8;
+			remoteInfo = "code-interview-ios-itunes-search";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Spacing.swift"; sourceTree = "<group>"; };
+		5B3809692A9850CF000D20D6 /* AppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescription.swift; sourceTree = "<group>"; };
+		5B38096B2A9871BA000D20D6 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
+		5B38096D2A988228000D20D6 /* AppReleaseNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReleaseNotes.swift; sourceTree = "<group>"; };
+		5B38096F2A98935D000D20D6 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateFormat.swift"; sourceTree = "<group>"; };
 		5BDE834C2A96058E006185E8 /* code-interview-ios-itunes-search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "code-interview-ios-itunes-search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = code_interview_ios_itunes_searchApp.swift; sourceTree = "<group>"; };
 		5BDE83512A96058E006185E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BDE83532A960591006185E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BDE83562A960591006185E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5BDE835D2A9622F0006185E8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		5BDE83622A963AFB006185E8 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		5BDE83642A96ED7B006185E8 /* AppDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailView.swift; sourceTree = "<group>"; };
+		5BDE83672A96EE9F006185E8 /* AppDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailHeader.swift; sourceTree = "<group>"; };
+		5BDE836A2A96F048006185E8 /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
+		5BDE836C2A96FCF1006185E8 /* AppInfoBadgesScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoBadgesScroll.swift; sourceTree = "<group>"; };
+		5BDE836F2A97007E006185E8 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		5BDE83712A971457006185E8 /* AppResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResponse.swift; sourceTree = "<group>"; };
+		5BDE83732A971809006185E8 /* Application+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Decodable.swift"; sourceTree = "<group>"; };
+		5BDE83752A972922006185E8 /* ApplicationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationError.swift; sourceTree = "<group>"; };
+		5BDE83772A97316F006185E8 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		5BDE837D2A973223006185E8 /* code-interview-ios-itunes-searchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "code-interview-ios-itunes-searchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BDE837F2A973223006185E8 /* code_interview_ios_itunes_searchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = code_interview_ios_itunes_searchTests.swift; sourceTree = "<group>"; };
+		5BDE83872A97565B006185E8 /* Application+Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+Sample.swift"; sourceTree = "<group>"; };
+		5BDE83892A976542006185E8 /* FiveStarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStarRating.swift; sourceTree = "<group>"; };
+		5BDE838B2A977302006185E8 /* IPhoneScreenShotsScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhoneScreenShotsScroll.swift; sourceTree = "<group>"; };
+		5BDE838D2A977619006185E8 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		5BDE83942A9782B2006185E8 /* ScrollingHStackModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingHStackModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5BDE83492A96058E006185E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BDE83612A9627C9006185E8 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BDE837A2A973223006185E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -34,10 +98,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B3809682A984F36000D20D6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */,
+				5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		5BDE83432A96058E006185E8 = {
 			isa = PBXGroup;
 			children = (
 				5BDE834E2A96058E006185E8 /* code-interview-ios-itunes-search */,
+				5BDE837E2A973223006185E8 /* code-interview-ios-itunes-searchTests */,
 				5BDE834D2A96058E006185E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				5BDE834C2A96058E006185E8 /* code-interview-ios-itunes-search.app */,
+				5BDE837D2A973223006185E8 /* code-interview-ios-itunes-searchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,8 +129,11 @@
 			isa = PBXGroup;
 			children = (
 				5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */,
-				5BDE83512A96058E006185E8 /* ContentView.swift */,
-				5BDE835D2A9622F0006185E8 /* SearchView.swift */,
+				5B38096F2A98935D000D20D6 /* SearchViewModel.swift */,
+				5BDE838F2A9781FD006185E8 /* Views */,
+				5BDE836E2A970075006185E8 /* Models */,
+				5BDE83692A96F038006185E8 /* Component */,
+				5B3809682A984F36000D20D6 /* Util */,
 				5BDE83532A960591006185E8 /* Assets.xcassets */,
 				5BDE83552A960591006185E8 /* Preview Content */,
 			);
@@ -66,8 +144,81 @@
 			isa = PBXGroup;
 			children = (
 				5BDE83562A960591006185E8 /* Preview Assets.xcassets */,
+				5BDE83872A97565B006185E8 /* Application+Sample.swift */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5BDE83662A96EE88006185E8 /* AppDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5BDE83642A96ED7B006185E8 /* AppDetailView.swift */,
+				5B38096D2A988228000D20D6 /* AppReleaseNotes.swift */,
+				5BDE83672A96EE9F006185E8 /* AppDetailHeader.swift */,
+				5BDE836C2A96FCF1006185E8 /* AppInfoBadgesScroll.swift */,
+				5BDE838B2A977302006185E8 /* IPhoneScreenShotsScroll.swift */,
+				5B3809692A9850CF000D20D6 /* AppDescription.swift */,
+			);
+			path = AppDetail;
+			sourceTree = "<group>";
+		};
+		5BDE83692A96F038006185E8 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				5BDE836A2A96F048006185E8 /* DownloadButton.swift */,
+				5BDE83892A976542006185E8 /* FiveStarRating.swift */,
+				5BDE838D2A977619006185E8 /* AppIcon.swift */,
+				5B38096B2A9871BA000D20D6 /* ExpandableText.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		5BDE836E2A970075006185E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5BDE836F2A97007E006185E8 /* Application.swift */,
+				5BDE83752A972922006185E8 /* ApplicationError.swift */,
+				5BDE83732A971809006185E8 /* Application+Decodable.swift */,
+				5BDE83712A971457006185E8 /* AppResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5BDE837E2A973223006185E8 /* code-interview-ios-itunes-searchTests */ = {
+			isa = PBXGroup;
+			children = (
+				5BDE83772A97316F006185E8 /* TestData.swift */,
+				5BDE837F2A973223006185E8 /* code_interview_ios_itunes_searchTests.swift */,
+			);
+			path = "code-interview-ios-itunes-searchTests";
+			sourceTree = "<group>";
+		};
+		5BDE838F2A9781FD006185E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BDE83512A96058E006185E8 /* ContentView.swift */,
+				5BDE83912A978283006185E8 /* Modifiers */,
+				5BDE83902A978227006185E8 /* Search */,
+				5BDE83662A96EE88006185E8 /* AppDetail */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5BDE83902A978227006185E8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				5BDE835D2A9622F0006185E8 /* SearchView.swift */,
+				5BDE83622A963AFB006185E8 /* SearchResultCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		5BDE83912A978283006185E8 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				5BDE83942A9782B2006185E8 /* ScrollingHStackModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +237,30 @@
 			dependencies = (
 			);
 			name = "code-interview-ios-itunes-search";
+			packageProductDependencies = (
+				5BDE83602A9627C9006185E8 /* Alamofire */,
+			);
 			productName = "code-interview-ios-itunes-search";
 			productReference = 5BDE834C2A96058E006185E8 /* code-interview-ios-itunes-search.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5BDE837C2A973223006185E8 /* code-interview-ios-itunes-searchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BDE83832A973223006185E8 /* Build configuration list for PBXNativeTarget "code-interview-ios-itunes-searchTests" */;
+			buildPhases = (
+				5BDE83792A973223006185E8 /* Sources */,
+				5BDE837A2A973223006185E8 /* Frameworks */,
+				5BDE837B2A973223006185E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BDE83822A973223006185E8 /* PBXTargetDependency */,
+			);
+			name = "code-interview-ios-itunes-searchTests";
+			productName = "code-interview-ios-itunes-searchTests";
+			productReference = 5BDE837D2A973223006185E8 /* code-interview-ios-itunes-searchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -103,6 +275,10 @@
 					5BDE834B2A96058E006185E8 = {
 						CreatedOnToolsVersion = 14.3;
 					};
+					5BDE837C2A973223006185E8 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 5BDE834B2A96058E006185E8;
+					};
 				};
 			};
 			buildConfigurationList = 5BDE83472A96058E006185E8 /* Build configuration list for PBXProject "code-interview-ios-itunes-search" */;
@@ -114,11 +290,15 @@
 				Base,
 			);
 			mainGroup = 5BDE83432A96058E006185E8;
+			packageReferences = (
+				5BDE835F2A9627C9006185E8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 5BDE834D2A96058E006185E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				5BDE834B2A96058E006185E8 /* code-interview-ios-itunes-search */,
+				5BDE837C2A973223006185E8 /* code-interview-ios-itunes-searchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -133,6 +313,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BDE837B2A973223006185E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -140,13 +327,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B3809702A98935D000D20D6 /* SearchViewModel.swift in Sources */,
+				5BDE838A2A976542006185E8 /* FiveStarRating.swift in Sources */,
+				5BDE83702A97007E006185E8 /* Application.swift in Sources */,
+				5BDE83952A9782B2006185E8 /* ScrollingHStackModifier.swift in Sources */,
+				5B38096A2A9850CF000D20D6 /* AppDescription.swift in Sources */,
+				5BDE838E2A977619006185E8 /* AppIcon.swift in Sources */,
+				5BDE83882A97565B006185E8 /* Application+Sample.swift in Sources */,
+				5BDE838C2A977302006185E8 /* IPhoneScreenShotsScroll.swift in Sources */,
 				5BDE83522A96058E006185E8 /* ContentView.swift in Sources */,
+				5B38096E2A988228000D20D6 /* AppReleaseNotes.swift in Sources */,
+				5BDE83722A971458006185E8 /* AppResponse.swift in Sources */,
 				5BDE835E2A9622F0006185E8 /* SearchView.swift in Sources */,
+				5BDE836D2A96FCF1006185E8 /* AppInfoBadgesScroll.swift in Sources */,
+				5BDE83652A96ED7B006185E8 /* AppDetailView.swift in Sources */,
+				5B3809672A984E0C000D20D6 /* CGFloat+Spacing.swift in Sources */,
+				5BDE83632A963AFB006185E8 /* SearchResultCell.swift in Sources */,
 				5BDE83502A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift in Sources */,
+				5BDE83742A971809006185E8 /* Application+Decodable.swift in Sources */,
+				5B38096C2A9871BA000D20D6 /* ExpandableText.swift in Sources */,
+				5BDE836B2A96F048006185E8 /* DownloadButton.swift in Sources */,
+				5B3809722A98AB3B000D20D6 /* String+DateFormat.swift in Sources */,
+				5BDE83682A96EE9F006185E8 /* AppDetailHeader.swift in Sources */,
+				5BDE83762A972922006185E8 /* ApplicationError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BDE83792A973223006185E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BDE83802A973223006185E8 /* code_interview_ios_itunes_searchTests.swift in Sources */,
+				5BDE83862A9732CB006185E8 /* TestData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5BDE83822A973223006185E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BDE834B2A96058E006185E8 /* code-interview-ios-itunes-search */;
+			targetProxy = 5BDE83812A973223006185E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5BDE83582A960591006185E8 /* Debug */ = {
@@ -333,6 +557,42 @@
 			};
 			name = Release;
 		};
+		5BDE83842A973223006185E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SUDPP9C593;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.martin.code-interview-ios-itunes-searchTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/code-interview-ios-itunes-search.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/code-interview-ios-itunes-search";
+			};
+			name = Debug;
+		};
+		5BDE83852A973223006185E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SUDPP9C593;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.martin.code-interview-ios-itunes-searchTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/code-interview-ios-itunes-search.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/code-interview-ios-itunes-search";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -354,7 +614,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5BDE83832A973223006185E8 /* Build configuration list for PBXNativeTarget "code-interview-ios-itunes-searchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BDE83842A973223006185E8 /* Debug */,
+				5BDE83852A973223006185E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5BDE835F2A9627C9006185E8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5BDE83602A9627C9006185E8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5BDE835F2A9627C9006185E8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5BDE83442A96058E006185E8 /* Project object */;
 }
