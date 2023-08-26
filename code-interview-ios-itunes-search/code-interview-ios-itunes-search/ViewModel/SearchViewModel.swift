@@ -26,12 +26,17 @@ final class SearchViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] query in
-                guard !query.isEmpty else {
-                    self?.setSubmit(to: false)
-                    return
-                }
-                
                 self?.fetchSearchResult(query: query)
+            }
+            .store(in: &cancellables)
+        
+        $isSubmitted
+            .sink { [weak self] submitted in
+                guard let self else { return }
+                guard submitted else { return }
+                guard !self.searchQuery.isEmpty else { return }
+                
+                self.memorizeSearchQuery(self.searchQuery)
             }
             .store(in: &cancellables)
     }
@@ -44,7 +49,7 @@ final class SearchViewModel: ObservableObject {
         searchQuery = string
     }
     
-    func deleteHistory() {
+    func deleteSearchHistory() {
         let userDefaults = UserDefaults.standard
         userDefaults.set(Array<String>(), forKey: historyKey)
         searchHistory = userDefaults.stringArray(forKey: historyKey) ?? []
@@ -68,7 +73,10 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func fetchSearchResult(query: String) {
-        guard !query.isEmpty else { return }
+        guard !query.isEmpty else {
+            setSubmit(to: false)
+            return
+        }
         
         let parameters = [
             "term" : query,

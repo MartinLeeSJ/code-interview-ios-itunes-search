@@ -107,6 +107,14 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		5B3809732A99BE28000D20D6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B38096F2A98935D000D20D6 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5BDE83432A96058E006185E8 = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */,
-				5B38096F2A98935D000D20D6 /* SearchViewModel.swift */,
+				5B3809732A99BE28000D20D6 /* ViewModel */,
 				5BDE838F2A9781FD006185E8 /* Views */,
 				5BDE836E2A970075006185E8 /* Models */,
 				5BDE83692A96F038006185E8 /* Component */,
