@@ -77,7 +77,7 @@ extension SearchView {
     @ViewBuilder
     var searchResults: some View {
         ScrollView {
-            LazyVStack(spacing: .spacing(multiplier: 2)) {
+            LazyVStack(spacing: .spacing(multiplier: 4)) {
                 ForEach(viewModel.searchResults, id: \.self) { app in
                     SearchResultCell(app: app)
                 }

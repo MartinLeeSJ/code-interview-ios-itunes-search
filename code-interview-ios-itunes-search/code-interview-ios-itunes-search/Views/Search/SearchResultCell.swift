@@ -21,8 +21,8 @@ struct SearchResultCell: View {
             AppDetailView(app: app)
         } label: {
             VStack(spacing: .spacing(multiplier: 2)) {
-                cellHeader
-                screenShots
+                cellHeader()
+                screenShots()
             }
         }
     }
@@ -30,12 +30,11 @@ struct SearchResultCell: View {
 
 // MARK: - 앱 아이콘 제목 버튼
 extension SearchResultCell {
-    @ViewBuilder
-    private var cellHeader: some View {
+    private func cellHeader() -> some View {
         HStack(alignment: .center, spacing: .spacing(multiplier: 2)) {
             AppIconView(url: URL(string: app.iconUrl), iconWidth: appIconWidth)
             
-            titleAndSellerName
+            titleAndSellerName()
             
             Spacer()
             
@@ -43,7 +42,7 @@ extension SearchResultCell {
         }
     }
     
-    private var titleAndSellerName: some View {
+    private func titleAndSellerName() -> some View {
         VStack(alignment: .leading) {
             Text(app.title)
                 .font(.body)
@@ -66,8 +65,16 @@ extension SearchResultCell {
         Array(repeating: .init(.flexible(), spacing: gridSpacing), count: screenShotUrlsPrefix.count)
     }
     
+    private var minHeight: CGFloat {
+        return 196.0
+    }
+    
+    private var maxHeight: CGFloat {
+        return 348.0
+    }
+    
     @ViewBuilder
-    var screenShots: some View {
+    private func screenShots() -> some View {
         LazyVGrid(columns: gridColumns) {
             ForEach(screenShotUrlsPrefix, id: \.self) { urlString in
                 CachedAsyncImage(url: URL(string: urlString)) { phase in
@@ -76,25 +83,33 @@ extension SearchResultCell {
                         image
                             .resizable()
                             .scaledToFit()
-                            .frame(minHeight: 196, maxHeight: 348)
+                            .frame(minHeight: minHeight, maxHeight: maxHeight)
                             .cornerRadius(girdCellCornerRadius)
                     case .empty:
-                        RoundedRectangle(cornerRadius: girdCellCornerRadius)
-                            .foregroundStyle(.thinMaterial)
-                            .frame(minHeight: 196, maxHeight: 348)
+                        screenShotPlaceHolder
+                            .overlay { ProgressView() }
                     case .failure:
-                        RoundedRectangle(cornerRadius: girdCellCornerRadius)
-                            .foregroundStyle(.thinMaterial)
-                            .frame(minHeight: 196, maxHeight: 348)
+                        screenShotPlaceHolder
+                            .overlay {
+                                Image(systemName: "exclamationmark")
+                                    .imageScale(.large)
+                            }
                     @unknown default:
-                        RoundedRectangle(cornerRadius: girdCellCornerRadius)
-                            .foregroundStyle(.thinMaterial)
-                            .frame(minHeight: 196, maxHeight: 348)
+                        screenShotPlaceHolder
+                            .overlay {
+                                Image(systemName: "questionmark")
+                                    .imageScale(.large)
+                            }
                     }
                 }
             }
         }
-
+    }
+    
+    private var screenShotPlaceHolder: some View {
+        RoundedRectangle(cornerRadius: girdCellCornerRadius)
+            .foregroundStyle(.thinMaterial)
+            .frame(minHeight: minHeight, maxHeight: maxHeight)
     }
 }
 
