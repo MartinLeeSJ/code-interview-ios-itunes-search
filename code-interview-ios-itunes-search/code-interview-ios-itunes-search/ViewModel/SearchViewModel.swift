@@ -26,6 +26,7 @@ final class SearchViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] query in
+                self?.searchResults.removeAll()
                 self?.fetchSearchResult(query: query)
             }
             .store(in: &cancellables)
@@ -94,9 +95,6 @@ final class SearchViewModel: ObservableObject {
             switch response.result {
             case .success(let results):
                 self?.searchResults = results.applications
-                
-                self?.memorizeSearchQuery(query)
-                
             case .failure(let error):
                 print(error)
             }

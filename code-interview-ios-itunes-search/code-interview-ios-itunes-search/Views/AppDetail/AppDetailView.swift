@@ -30,6 +30,7 @@ struct AppDetailView: View {
                 }
                 .padding()
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

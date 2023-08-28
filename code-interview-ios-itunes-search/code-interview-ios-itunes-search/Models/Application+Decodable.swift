@@ -38,34 +38,34 @@ extension Application: Decodable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         let rawId = try? values.decode(Int.self, forKey: .id)
         let rawTitle = try? values.decode(String.self, forKey: .title)
         let rawSellerName = try? values.decode(String.self, forKey: .sellerName)
         let rawDescription = try? values.decode(String.self, forKey: .description)
-        
+
         let rawIconUrl = try? values.decode(String.self, forKey: .iconUrl)
         let rawUrl = try? values.decode(String.self, forKey: .url)
         let rawScreenshotUrls = try? values.decode([String].self, forKey: .screenshotUrls)
         let rawIpadScreenshotUrls = try? values.decode([String].self, forKey: .ipadScreenshotUrls)
         let rawAppletvScreenshotUrls = try? values.decode([String].self, forKey: .appletvScreenshotUrls)
-        
+
         let rawPrimaryGenreName = try? values.decode(String.self, forKey: .primaryGenreName)
         let rawGenres = try? values.decode([String].self, forKey: .genres)
         let rawLanguages = try? values.decode([String].self, forKey: .languages)
         let rawFileSizeBytes = try? values.decode(String.self, forKey: .fileSizeBytes)
-        
+
         let rawContentAdvisoryRating = try? values.decode(String.self, forKey: .contentAdvisoryRating)
         let rawAverageUserRating = try? values.decode(Double.self, forKey: .averageUserRating)
         let rawUserRatingCount = try? values.decode(Int.self, forKey: .userRatingCount)
-        
+
         let rawVersion = try? values.decode(String.self, forKey: .version)
         let rawReleaseNotes = try? values.decode(String.self, forKey: .releaseNotes)
         let rawCurrentVersionReleaseDate = try? values.decode(String.self, forKey: .currentVersionReleaseDate)
         let rawMinimumOsVersion = try? values.decode(String.self, forKey: .minimumOsVersion)
         let rawSupportedDevices = try? values.decode([String].self, forKey: .supportedDevices)
-        
-        
+
+
         guard let id = rawId,
               let title = rawTitle,
               let sellerName = rawSellerName,
@@ -89,9 +89,9 @@ extension Application: Decodable {
               let supportedDevices = rawSupportedDevices else {
             throw ApplicationError.missingData
         }
-        
-        
-        
+
+
+
         self.id = id
         self.title = title
         self.description = description

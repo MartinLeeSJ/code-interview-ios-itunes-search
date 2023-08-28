@@ -19,7 +19,7 @@ struct AppDetailHeader: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: .spacing(multiplier: 2)) {
-                AppIcon(url: iconUrl, iconWidth: iconSize)
+            AppIconView(url: URL(string: iconUrl), iconWidth: iconSize)
                 VStack(alignment: .leading) {
                     Text(title)
                         .font(.title3.bold())
