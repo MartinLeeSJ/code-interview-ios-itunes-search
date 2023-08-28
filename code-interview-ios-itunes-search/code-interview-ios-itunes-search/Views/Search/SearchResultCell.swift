@@ -14,7 +14,7 @@ struct SearchResultCell: View {
     private let gridSpacing: CGFloat = 8
     private let appIconWidth: CGFloat = 60
     private let appIconRadius: CGFloat = 8
-    private let girdCellCornerRadius: CGFloat = 10
+    private let gridCellCornerRadius: CGFloat = 10
     
     var body: some View {
         NavigationLink {
@@ -58,47 +58,59 @@ extension SearchResultCell {
 // MARK: - 앱 스크린샷
 extension SearchResultCell {
     private var screenShotUrlsPrefix: [String] {
-        if app.screenshotUrls.count >= 3 {
-            return Array(app.screenshotUrls.prefix(upTo: 3))
+        guard let first = app.screenshotUrls.first else { return [] }
+        //첫번째 사진이 Landscape일 경우 첫번째 사진 URL String만 배열에 담아 내보낸다.
+        guard knowIsPortraitURLImage(of: URL(string: first)) else { return [first] }
+        
+        guard app.screenshotUrls.count >= 3 else {
+            return app.screenshotUrls
         }
-        return app.screenshotUrls
+        
+        return Array(app.screenshotUrls.prefix(upTo: 3))
+    }
+    
+    private func knowIsPortraitURLImage(of url: URL?) -> Bool {
+        if let size = url?.itunesScreenShotSize() {
+            return size.width < size.height
+        }
+        return true
     }
     
     private var gridColumns: Array<GridItem> {
-        Array(repeating: .init(.flexible(), spacing: gridSpacing), count: 3)
-    }
-    
-    private var minHeight: CGFloat {
-        return 196.0
-    }
-    
-    private var maxHeight: CGFloat {
-        return 348.0
+        // screenShotUrlsPrefix의 길이가 1인 경우에만 count가 1
+        Array(
+            repeating: .init(.flexible(), spacing: gridSpacing),
+            count: screenShotUrlsPrefix.count == 1 ? 1 : 3
+        )
     }
     
     @ViewBuilder
     private func screenShots() -> some View {
         LazyVGrid(columns: gridColumns) {
             ForEach(screenShotUrlsPrefix, id: \.self) { urlString in
+                let url: URL? = URL(string: urlString)
+                let basicSize: CGSize = knowIsPortraitURLImage(of: url) ? CGSize(width: 1, height: 2) : CGSize(width: 2, height: 1)
+                let imageSize: CGSize = URL(string: urlString)?.itunesScreenShotSize() ?? basicSize
+                
                 CachedAsyncImage(url: URL(string: urlString)) { phase in
                     switch phase {
                     case .success(let image):
                         image
                             .resizable()
-                            .scaledToFit()
-                            .frame(minHeight: minHeight, maxHeight: maxHeight)
-                            .cornerRadius(girdCellCornerRadius)
+                            .aspectRatio(imageSize, contentMode: .fit)
+                            .cornerRadius(gridCellCornerRadius)
+                            
                     case .empty:
-                        screenShotPlaceHolder
+                        screenShotPlaceHolder(size: imageSize)
                             .overlay { ProgressView() }
                     case .failure:
-                        screenShotPlaceHolder
+                        screenShotPlaceHolder(size: imageSize)
                             .overlay {
                                 Image(systemName: "exclamationmark")
                                     .imageScale(.large)
                             }
                     @unknown default:
-                        screenShotPlaceHolder
+                        screenShotPlaceHolder(size: imageSize)
                             .overlay {
                                 Image(systemName: "questionmark")
                                     .imageScale(.large)
@@ -109,10 +121,10 @@ extension SearchResultCell {
         }
     }
     
-    private var screenShotPlaceHolder: some View {
-        RoundedRectangle(cornerRadius: girdCellCornerRadius)
+    private func screenShotPlaceHolder(size: CGSize) -> some View {
+        RoundedRectangle(cornerRadius: gridCellCornerRadius)
             .foregroundStyle(.thinMaterial)
-            .frame(minHeight: minHeight, maxHeight: maxHeight)
+            .aspectRatio(size, contentMode: .fit)
     }
 }
 
