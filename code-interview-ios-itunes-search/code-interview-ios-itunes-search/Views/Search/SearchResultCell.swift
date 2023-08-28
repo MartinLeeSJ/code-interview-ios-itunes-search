@@ -58,11 +58,14 @@ extension SearchResultCell {
 // MARK: - 앱 스크린샷
 extension SearchResultCell {
     private var screenShotUrlsPrefix: [String] {
-        Array(app.screenshotUrls.prefix(upTo: 3))
+        if app.screenshotUrls.count >= 3 {
+            return Array(app.screenshotUrls.prefix(upTo: 3))
+        }
+        return app.screenshotUrls
     }
     
     private var gridColumns: Array<GridItem> {
-        Array(repeating: .init(.flexible(), spacing: gridSpacing), count: screenShotUrlsPrefix.count)
+        Array(repeating: .init(.flexible(), spacing: gridSpacing), count: 3)
     }
     
     private var minHeight: CGFloat {

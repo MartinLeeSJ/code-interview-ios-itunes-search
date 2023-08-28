@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B14A56C2A9C7EF30023F255 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A56B2A9C7EF30023F255 /* CachedAsyncImage.swift */; };
+		5B14A5732A9CA72D0023F255 /* Int+NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A5722A9CA72D0023F255 /* Int+NumberFormatter.swift */; };
 		5B3809672A984E0C000D20D6 /* CGFloat+Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */; };
 		5B38096A2A9850CF000D20D6 /* AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809692A9850CF000D20D6 /* AppDescription.swift */; };
 		5B38096C2A9871BA000D20D6 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096B2A9871BA000D20D6 /* ExpandableText.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		5B14A56B2A9C7EF30023F255 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
+		5B14A5722A9CA72D0023F255 /* Int+NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+NumberFormatter.swift"; sourceTree = "<group>"; };
 		5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Spacing.swift"; sourceTree = "<group>"; };
 		5B3809692A9850CF000D20D6 /* AppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescription.swift; sourceTree = "<group>"; };
 		5B38096B2A9871BA000D20D6 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
@@ -103,10 +105,27 @@
 		5B14A56F2A9C86AA0023F255 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				5BDE83892A976542006185E8 /* FiveStarRating.swift */,
 				5B14A56B2A9C7EF30023F255 /* CachedAsyncImage.swift */,
 				5BDE838D2A977619006185E8 /* AppIconView.swift */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		5B14A5702A9C94220023F255 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				5BDE836A2A96F048006185E8 /* DownloadButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		5B14A5712A9C94290023F255 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				5B38096B2A9871BA000D20D6 /* ExpandableText.swift */,
+			);
+			path = Selection;
 			sourceTree = "<group>";
 		};
 		5B3809682A984F36000D20D6 /* Util */ = {
@@ -114,6 +133,7 @@
 			children = (
 				5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */,
 				5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */,
+				5B14A5722A9CA72D0023F255 /* Int+NumberFormatter.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -183,10 +203,9 @@
 		5BDE83692A96F038006185E8 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				5BDE836A2A96F048006185E8 /* DownloadButton.swift */,
-				5BDE83892A976542006185E8 /* FiveStarRating.swift */,
+				5B14A5702A9C94220023F255 /* Button */,
 				5B14A56F2A9C86AA0023F255 /* Image */,
-				5B38096B2A9871BA000D20D6 /* ExpandableText.swift */,
+				5B14A5712A9C94290023F255 /* Selection */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -195,8 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				5BDE836F2A97007E006185E8 /* Application.swift */,
-				5BDE83752A972922006185E8 /* ApplicationError.swift */,
 				5BDE83732A971809006185E8 /* Application+Decodable.swift */,
+				5BDE83752A972922006185E8 /* ApplicationError.swift */,
 				5BDE83712A971457006185E8 /* AppResponse.swift */,
 			);
 			path = Models;
@@ -214,9 +233,9 @@
 		5BDE838F2A9781FD006185E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5BDE83912A978283006185E8 /* Modifiers */,
-				5BDE83692A96F038006185E8 /* Component */,
 				5BDE83512A96058E006185E8 /* ContentView.swift */,
+				5BDE83692A96F038006185E8 /* Component */,
+				5BDE83912A978283006185E8 /* Modifiers */,
 				5BDE83902A978227006185E8 /* Search */,
 				5BDE83662A96EE88006185E8 /* AppDetail */,
 			);
@@ -359,6 +378,7 @@
 				5B14A56C2A9C7EF30023F255 /* CachedAsyncImage.swift in Sources */,
 				5BDE83722A971458006185E8 /* AppResponse.swift in Sources */,
 				5BDE835E2A9622F0006185E8 /* SearchView.swift in Sources */,
+				5B14A5732A9CA72D0023F255 /* Int+NumberFormatter.swift in Sources */,
 				5BDE836D2A96FCF1006185E8 /* AppInfoBadgesScroll.swift in Sources */,
 				5BDE83652A96ED7B006185E8 /* AppDetailView.swift in Sources */,
 				5B3809672A984E0C000D20D6 /* CGFloat+Spacing.swift in Sources */,

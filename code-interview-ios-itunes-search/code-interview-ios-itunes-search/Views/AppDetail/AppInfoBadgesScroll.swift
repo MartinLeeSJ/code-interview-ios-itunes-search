@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-struct AppInfoBadge<M, B>: View where M : View, B : View {
+struct AppInfoBadge<Middle, Bottom>: View where Middle : View, Bottom : View {
     let top: String
-    let middle: () -> M
-    let bottom: () -> B
+    let middle: () -> Middle
+    let bottom: () -> Bottom
     
     private let minWidth: CGFloat = 100
     private let maxWidth: CGFloat = 105
     
-    init(title top: String, middle: @escaping () -> M, bottom: @escaping () -> B) {
+    init(
+        title top: String,
+        middle: @escaping () -> Middle,
+        bottom: @escaping () -> Bottom
+    ) {
         self.top = top
         self.middle = middle
         self.bottom = bottom
@@ -60,16 +64,16 @@ struct AppInfoBadgesScroll: View {
 }
 
 extension AppInfoBadgesScroll {
-    private func userRatingString(_ rating: Double) -> String {
+    private func userRatingScore(_ number: Double) -> String {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 1
-        return formatter.string(from: rating as NSNumber) ?? "0.0"
+        return formatter.string(from: number as NSNumber) ?? "0.0"
     }
    
     @ViewBuilder
     func userRating(rating: Double, count: Int) -> some View {
-        AppInfoBadge(title: "\(count)개 의 평가") {
-            Text(userRatingString(rating))
+        AppInfoBadge(title: "\(count.formatPeopleNumber())개의 평가") {
+            Text(userRatingScore(rating))
         } bottom: {
             FiveStarRating(rating: Decimal(rating))
                 .padding(.horizontal)
