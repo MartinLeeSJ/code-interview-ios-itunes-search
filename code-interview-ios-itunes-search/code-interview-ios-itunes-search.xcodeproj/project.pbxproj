@@ -208,8 +208,8 @@
 				5B38096D2A988228000D20D6 /* AppReleaseNotes.swift */,
 				5BDE83672A96EE9F006185E8 /* AppDetailHeader.swift */,
 				5BDE836C2A96FCF1006185E8 /* AppInfoBadges.swift */,
-				5BB73A252A9DCAE3008EBF41 /* ScreenShot */,
 				5B3809692A9850CF000D20D6 /* AppDescription.swift */,
+				5BB73A252A9DCAE3008EBF41 /* ScreenShot */,
 			);
 			path = AppDetail;
 			sourceTree = "<group>";

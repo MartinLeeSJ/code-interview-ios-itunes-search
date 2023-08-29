@@ -76,14 +76,30 @@ extension SearchView {
 extension SearchView {
     @ViewBuilder
     var searchResults: some View {
-        ScrollView {
-            LazyVStack(spacing: .spacing(multiplier: 4)) {
-                ForEach(viewModel.searchResults, id: \.self) { app in
-                    SearchResultCell(app: app)
+        if viewModel.searchResults.isEmpty {
+            emptyResult
+        } else {
+            ScrollView {
+                LazyVStack(spacing: .spacing(multiplier: 4)) {
+                    ForEach(viewModel.searchResults, id: \.self) { app in
+                        SearchResultCell(app: app)
+                    }
                 }
             }
+            .scrollIndicators(.never)
         }
-        .scrollIndicators(.never)
+    }
+    
+    var emptyResult: some View {
+        VStack {
+            Spacer()
+            Text("결과 없음")
+                .font(.largeTitle.bold())
+            Text("\'\(viewModel.searchQuery)\'")
+                .font(.body)
+                .foregroundColor(.secondary)
+            Spacer()
+        }
     }
 }
 

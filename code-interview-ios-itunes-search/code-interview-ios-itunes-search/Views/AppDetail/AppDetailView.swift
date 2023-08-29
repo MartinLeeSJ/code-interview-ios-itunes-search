@@ -39,7 +39,6 @@ struct AppDetailView: View {
                     
                     AppScreenShots(app: app)
                     
-                    
                     AppDescription(
                         app.description,
                         sellerName: app.sellerName
