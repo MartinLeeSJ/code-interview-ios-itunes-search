@@ -17,6 +17,7 @@
 		5B3809702A98935D000D20D6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096F2A98935D000D20D6 /* SearchViewModel.swift */; };
 		5B3809722A98AB3B000D20D6 /* String+DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */; };
 		5BB73A242A9DC98B008EBF41 /* AppScreenShots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB73A232A9DC98B008EBF41 /* AppScreenShots.swift */; };
+		5BB73A272A9DCF9C008EBF41 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB73A262A9DCF9C008EBF41 /* SearchResultView.swift */; };
 		5BDE83502A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */; };
 		5BDE83522A96058E006185E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDE83512A96058E006185E8 /* ContentView.swift */; };
 		5BDE83542A960591006185E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BDE83532A960591006185E8 /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		5B38096F2A98935D000D20D6 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DateFormat.swift"; sourceTree = "<group>"; };
 		5BB73A232A9DC98B008EBF41 /* AppScreenShots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppScreenShots.swift; sourceTree = "<group>"; };
+		5BB73A262A9DCF9C008EBF41 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		5BDE834C2A96058E006185E8 /* code-interview-ios-itunes-search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "code-interview-ios-itunes-search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BDE834F2A96058E006185E8 /* code_interview_ios_itunes_searchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = code_interview_ios_itunes_searchApp.swift; sourceTree = "<group>"; };
 		5BDE83512A96058E006185E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,12 +126,12 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
-		5B14A5712A9C94290023F255 /* Selection */ = {
+		5B14A5712A9C94290023F255 /* Text */ = {
 			isa = PBXGroup;
 			children = (
 				5B38096B2A9871BA000D20D6 /* ExpandableText.swift */,
 			);
-			path = Selection;
+			path = Text;
 			sourceTree = "<group>";
 		};
 		5B3809682A984F36000D20D6 /* Util */ = {
@@ -219,7 +221,7 @@
 			children = (
 				5B14A5702A9C94220023F255 /* Button */,
 				5B14A56F2A9C86AA0023F255 /* Image */,
-				5B14A5712A9C94290023F255 /* Selection */,
+				5B14A5712A9C94290023F255 /* Text */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				5BDE835D2A9622F0006185E8 /* SearchView.swift */,
+				5BB73A262A9DCF9C008EBF41 /* SearchResultView.swift */,
 				5BDE83622A963AFB006185E8 /* SearchResultCell.swift */,
 			);
 			path = Search;
@@ -380,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B3809702A98935D000D20D6 /* SearchViewModel.swift in Sources */,
+				5BB73A272A9DCF9C008EBF41 /* SearchResultView.swift in Sources */,
 				5BDE838A2A976542006185E8 /* FiveStarRating.swift in Sources */,
 				5BDE83702A97007E006185E8 /* Application.swift in Sources */,
 				5BDE83952A9782B2006185E8 /* SnapScrollingHStack.swift in Sources */,

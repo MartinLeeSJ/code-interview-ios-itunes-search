@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AppDetailView: View {
     private let app: Application
-    
+    @State private var scrollOffset: CGFloat = 0
     init(app: Application) {
         self.app = app
     }
@@ -27,9 +27,16 @@ struct AppDetailView: View {
                         url: app.url,
                         iconSize: appIconSize
                     )
-                    .frame(height: appIconSize)
+                    .onAppear {
+                        print("내가 다시 나타나볼게 얍!")
+                    }
                     
-                    AppInfoBadges(app: app)
+                    AppInfoBadges(
+                        averageUserRating: app.averageUserRating,
+                        userRatingCount: app.userRatingCount,
+                        contentAdvisoryRating: app.contentAdvisoryRating,
+                        sellerName: app.sellerName
+                    )
                     
                     AppReleaseNotes(
                         releaseNotes: app.releaseNotes,

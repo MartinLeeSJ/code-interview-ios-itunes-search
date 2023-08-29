@@ -58,8 +58,11 @@ extension SearchResultCell {
 // MARK: - 앱 스크린샷
 extension SearchResultCell {
     
-    private var screenShotUrlsPrefix: [String] {
-        guard let firstUrl = app.screenshotUrls.first else { return [] }
+    /// 스크린샷 URL string 배열중 검색 결과로 보여줄 부분을 앞에서부터 추리는 메서드
+    /// - Parameter screenshotUrls: 스크린샷 URL string 배열
+    /// - Returns: 맨 처음 사진이 Portrait이면 최대 3개의 url을 Landscape이면 1개의 url을 리턴한다.
+    private func prefixOfScreenShotUrls(_ screenshotUrls: [String]) -> [String] {
+        guard let firstUrl = screenshotUrls.first else { return [] }
         
         //첫번째 사진이 Portrait이 아니라 Landscape일 경우 첫번째 사진 URL String만 배열에 담아 내보낸다.
         guard let isPortraitImage = URL(string: firstUrl)?.isPortraitImage(),
@@ -69,12 +72,12 @@ extension SearchResultCell {
         }
         
         //스크린샷이 3장이 넘지 않을 경우 그대로 내보낸다
-        guard app.screenshotUrls.count >= 3 else {
-            return app.screenshotUrls
+        guard screenshotUrls.count > 3 else {
+            return screenshotUrls
         }
         
         //스크린샷이 3장이 넘을 경우 앞에서 3가지의 url만 내보낸다.
-        return Array(app.screenshotUrls.prefix(upTo: 3))
+        return Array(screenshotUrls.prefix(upTo: 3))
     }
     
     
@@ -87,14 +90,14 @@ extension SearchResultCell {
         // screenShotUrlsPrefix의 길이가 1인 경우에만 count가 1
         Array(
             repeating: .init(.flexible(), spacing: gridSpacing),
-            count: screenShotUrlsPrefix.count == 1 ? 1 : 3
+            count: prefixOfScreenShotUrls(app.screenshotUrls).count == 1 ? 1 : 3
         )
     }
     
     @ViewBuilder
     private func screenShots() -> some View {
         LazyVGrid(columns: gridColumns) {
-            ForEach(screenShotUrlsPrefix, id: \.self) { urlString in
+            ForEach(prefixOfScreenShotUrls(app.screenshotUrls), id: \.self) { urlString in
                 let url: URL? = URL(string: urlString)
                 let imageSize: CGSize = url?.itunesScreenShotSize() ?? basicImageSize(of: url)
                 

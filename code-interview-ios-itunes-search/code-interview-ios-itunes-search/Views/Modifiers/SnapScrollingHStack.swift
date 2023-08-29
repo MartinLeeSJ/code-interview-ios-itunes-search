@@ -62,7 +62,6 @@ struct SnapScrollingHStack: ViewModifier {
                     }
                     .onEnded { event in
                         // Scroll to where user dragged
-                        print(event.translation.width)
                         scrollOffset += event.translation.width
                  
                         dragOffset = 0

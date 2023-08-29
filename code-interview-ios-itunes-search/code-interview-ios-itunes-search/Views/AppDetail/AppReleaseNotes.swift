@@ -39,6 +39,7 @@ struct AppReleaseNotes: View {
                 Text("새로운 기능")
                     .font(.title3.bold())
                 Spacer()
+                
                 NavigationLink {
                     
                 } label: {

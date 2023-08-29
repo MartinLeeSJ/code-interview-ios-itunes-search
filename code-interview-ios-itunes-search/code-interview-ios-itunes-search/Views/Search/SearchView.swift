@@ -9,14 +9,13 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
-    @Environment(\.isSearching) private var isSearching
     @Environment(\.dismissSearch) private var dismissSearch
     
     var body: some View {
         NavigationStack {
             Group {
                 if viewModel.isSubmitted {
-                    searchResults
+                    SearchResultView(viewModel: viewModel)
                 } else {
                     searchHistory
                 }
@@ -72,37 +71,7 @@ extension SearchView {
     }
 }
 
-//MARK: - 검색결과
-extension SearchView {
-    @ViewBuilder
-    var searchResults: some View {
-        if viewModel.searchResults.isEmpty {
-            emptyResult
-        } else {
-            ScrollView {
-                LazyVStack(spacing: .spacing(multiplier: 4)) {
-                    ForEach(viewModel.searchResults, id: \.self) { app in
-                        SearchResultCell(app: app)
-                    }
-                }
-            }
-            .scrollIndicators(.never)
-        }
-    }
-    
-    var emptyResult: some View {
-        VStack {
-            Spacer()
-            Text("결과 없음")
-                .font(.largeTitle.bold())
-            Text("\'\(viewModel.searchQuery)\'")
-                .font(.body)
-                .foregroundColor(.secondary)
-            Spacer()
-        }
-    }
-}
-
+//MARK: - 검색제안
 extension SearchView {
     @ViewBuilder
     func searchSuggestionList() -> some View {

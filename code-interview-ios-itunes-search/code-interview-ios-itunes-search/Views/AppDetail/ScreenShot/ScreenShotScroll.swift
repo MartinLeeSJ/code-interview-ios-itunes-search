@@ -14,7 +14,7 @@ struct ScreenShotScroll: View {
         self.screenShotUrls = screenShotUrls
     }
 
-    private let imageWidth: CGFloat = 200
+    private let imageWidth: CGFloat = 250
     private let portraitImageSize = CGSize(width: 1, height: 2)
     private let imageSpacing: CGFloat = .spacing(multiplier: 2)
     private var imageCornerRadius: CGFloat { imageWidth / 10 }

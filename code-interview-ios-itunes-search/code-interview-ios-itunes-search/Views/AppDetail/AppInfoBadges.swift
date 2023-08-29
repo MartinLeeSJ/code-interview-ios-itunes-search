@@ -43,10 +43,22 @@ fileprivate struct Badge<Middle, Bottom>: View where Middle: View, Bottom: View 
 }
 
 struct AppInfoBadges: View {
-    private let app: Application
     
-    init(app: Application) {
-        self.app = app
+    private let averageUserRating: Double
+    private let userRatingCount: Int
+    private let contentAdvisoryRating: String
+    private let sellerName: String
+    
+    init(
+        averageUserRating: Double,
+        userRatingCount: Int,
+        contentAdvisoryRating: String,
+        sellerName: String
+    ) {
+        self.averageUserRating = averageUserRating
+        self.userRatingCount = userRatingCount
+        self.contentAdvisoryRating = contentAdvisoryRating
+        self.sellerName = sellerName
     }
     
     var body: some View {
@@ -54,11 +66,11 @@ struct AppInfoBadges: View {
             VStack {
                 Divider()
                 HStack(spacing: .zero) {
-                    userRating(rating: app.averageUserRating, count: app.userRatingCount)
+                    userRating(rating: averageUserRating, count: userRatingCount)
                     
-                    contentAdvisoryRating(rating: app.contentAdvisoryRating)
+                    contentAdvisoryRating(rating: contentAdvisoryRating)
                     
-                    sellerInfo(name: app.sellerName)
+                    sellerInfo(name: sellerName)
                     
                     languageInfo()
                 }
@@ -129,8 +141,3 @@ extension AppInfoBadges {
     }
 }
 
-struct AppDetailHeaderScroll_Previews: PreviewProvider {
-    static var previews: some View {
-        AppInfoBadges(app: Application.sample)
-    }
-}
