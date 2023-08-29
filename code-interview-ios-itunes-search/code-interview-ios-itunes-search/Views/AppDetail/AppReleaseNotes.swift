@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct AppReleaseNotes: View {
-    let releaseNotes: String
-    let version: String
-    let currentVersionReleaseDate: Date
+    private let releaseNotes: String
+    private let version: String
+    private let currentVersionReleaseDate: Date
+    
+    private let fontSize: CGFloat = 14
+    private let lineSpacing: CGFloat = 10
+    private let lineLimit: Int = 3
     
     private var releaseDateString: String {
         let formatter = RelativeDateTimeFormatter()
+        formatter.dateTimeStyle = .named
         formatter.unitsStyle = .full
         return formatter.localizedString(for: currentVersionReleaseDate, relativeTo: Date.now)
+    }
+    
+    init(
+        releaseNotes: String,
+        version: String,
+        currentVersionReleaseDate: Date
+    ) {
+        self.releaseNotes = releaseNotes
+        self.version = version
+        self.currentVersionReleaseDate = currentVersionReleaseDate
     }
     
     var body: some View {
@@ -24,6 +39,7 @@ struct AppReleaseNotes: View {
                 Text("새로운 기능")
                     .font(.title3.bold())
                 Spacer()
+                
                 NavigationLink {
                     
                 } label: {
@@ -40,9 +56,12 @@ struct AppReleaseNotes: View {
             .font(.caption)
             .foregroundColor(.secondary)
             
-            
-            
-            ExpandableText(releaseNotes)
+            ExpandableText(
+                releaseNotes,
+                fontSize: fontSize,
+                lineSpacing: lineSpacing,
+                lineLimit: lineLimit
+            )
                 
             Divider()  
         }

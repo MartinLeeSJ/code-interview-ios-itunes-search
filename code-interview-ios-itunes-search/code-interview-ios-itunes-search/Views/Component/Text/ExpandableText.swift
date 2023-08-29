@@ -40,7 +40,7 @@ struct ExpandableText: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacing(multiplier: 2)) {
+        HStack {
             Text(text)
                 .font(.system(size: fontSize))
                 .lineSpacing(lineSpacing)
@@ -52,11 +52,12 @@ struct ExpandableText: View {
                         }
                     }
                 }
-                .overlay(alignment: .bottomTrailing) {
-                    if truncated && !expanded {
-                        toggleButton
-                    }
-                }
+            Spacer()
+        }
+        .overlay(alignment: .bottomTrailing) {
+            if truncated && !expanded {
+                toggleButton
+            }
         }
     }
     var toggleButton: some View {

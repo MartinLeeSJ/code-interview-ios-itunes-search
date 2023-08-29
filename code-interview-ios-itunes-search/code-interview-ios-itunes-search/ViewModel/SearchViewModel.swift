@@ -18,6 +18,7 @@ final class SearchViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let historyKey = "history"
     private let maxHistoryCount: Int = 10
+    private let userDefaults = UserDefaults.standard
     
     init() {
         self.searchHistory = UserDefaults.standard.stringArray(forKey: historyKey) ?? []
@@ -26,12 +27,18 @@ final class SearchViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .sink { [weak self] query in
-                guard !query.isEmpty else {
-                    self?.setSubmit(to: false)
-                    return
-                }
-                
+                self?.searchResults.removeAll()
                 self?.fetchSearchResult(query: query)
+            }
+            .store(in: &cancellables)
+        
+        $isSubmitted
+            .sink { [weak self] submitted in
+                guard let self else { return }
+                guard submitted else { return }
+                guard !self.searchQuery.isEmpty else { return }
+                
+                self.memorizeSearchQuery(self.searchQuery)
             }
             .store(in: &cancellables)
     }
@@ -44,19 +51,15 @@ final class SearchViewModel: ObservableObject {
         searchQuery = string
     }
     
-    func deleteHistory() {
-        let userDefaults = UserDefaults.standard
+    func deleteSearchHistory() {
         userDefaults.set(Array<String>(), forKey: historyKey)
-        searchHistory = userDefaults.stringArray(forKey: historyKey) ?? []
+        setSearchHistory()
     }
     
     private func memorizeSearchQuery(_ string: String) {
-        let userDefaults = UserDefaults.standard
-        
         if let histroy = userDefaults.stringArray(forKey: historyKey) {
-            var historySet: Set<String> = Set(histroy)
-            
-            historySet = Set(historySet.prefix(maxHistoryCount - 1))
+            let setLength: Int = histroy.count > maxHistoryCount ? maxHistoryCount : histroy.count
+            var historySet: Set<String> = Set(histroy.prefix(upTo: setLength - 2))
             historySet.insert(string)
             
             userDefaults.set(Array(historySet), forKey: historyKey)
@@ -64,11 +67,18 @@ final class SearchViewModel: ObservableObject {
             userDefaults.set([string], forKey: historyKey)
         }
         
+        setSearchHistory()
+    }
+    
+    private func setSearchHistory() {
         searchHistory = userDefaults.stringArray(forKey: historyKey) ?? []
     }
     
     private func fetchSearchResult(query: String) {
-        guard !query.isEmpty else { return }
+        guard !query.isEmpty else {
+            setSubmit(to: false)
+            return
+        }
         
         let parameters = [
             "term" : query,
@@ -86,9 +96,6 @@ final class SearchViewModel: ObservableObject {
             switch response.result {
             case .success(let results):
                 self?.searchResults = results.applications
-                
-                self?.memorizeSearchQuery(query)
-                
             case .failure(let error):
                 print(error)
             }

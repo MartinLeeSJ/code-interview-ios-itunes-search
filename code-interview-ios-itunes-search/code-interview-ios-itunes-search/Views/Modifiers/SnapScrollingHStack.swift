@@ -1,12 +1,12 @@
 //
-//  ScrollingHStackModifier.swift
+//  SnapScrollingHStack.swift
 //  code-interview-ios-itunes-search
 //
 //  Created by Martin on 2023/08/24.
 //
 import SwiftUI
 
-struct ScrollingHStackModifier: ViewModifier {
+struct SnapScrollingHStack: ViewModifier {
     enum SnapMode {
         case center
         case leading
@@ -30,7 +30,8 @@ struct ScrollingHStackModifier: ViewModifier {
         self.initialIndex = initialIndex
         
         // 전체의 너비를 구한다.
-        let contentWidth: CGFloat = CGFloat(items) * itemWidth + CGFloat(items - 1) * itemSpacing
+//        let contentWidth: CGFloat = CGFloat(items) * itemWidth + CGFloat(items - 1) * itemSpacing
+        let contentWidth = Self.contentWidth(items: items, width: itemWidth, spacing: itemSpacing)
         let screenWidth = UIScreen.main.bounds.width
         
         // 전체 너비의 절반을 오른쪽으로 움직이고
@@ -44,6 +45,11 @@ struct ScrollingHStackModifier: ViewModifier {
         
         self._scrollOffset = State(initialValue: initialOffset)
         self._dragOffset = State(initialValue: 0)
+    }
+    
+
+    private static func contentWidth(items: Int, width: CGFloat, spacing: CGFloat) -> CGFloat {
+        CGFloat(items) * width + CGFloat(items - 1) * spacing
     }
     
     func body(content: Content) -> some View {
@@ -61,10 +67,10 @@ struct ScrollingHStackModifier: ViewModifier {
                         dragOffset = 0
                         
                         // Now calculate which item to snap to
-                        let contentWidth: CGFloat = CGFloat(items) * itemWidth + CGFloat(items - 1) * itemSpacing
+                        let contentWidth = Self.contentWidth(items: items, width: itemWidth, spacing: itemSpacing)
                         let screenWidth = UIScreen.main.bounds.width
                         
-                        // Center position of current offset
+                        // contentWidth의 가운데를 기점으로 스크롤 오프셋 이동
                         let center = scrollOffset  + (contentWidth / 2.0)
                         
                         // Calculate which item we are closest to using the defined size
@@ -106,8 +112,10 @@ struct ScrollingHStackModifier: ViewModifier {
     }
 }
 
+
+
 extension View {
-    func scrollingHStack(_ snapMode: ScrollingHStackModifier.SnapMode, items: Int, itemWidth: CGFloat, spacing: CGFloat) -> some View {
-        modifier(ScrollingHStackModifier(snapMode: snapMode, items: items, itemWidth: itemWidth, itemSpacing: spacing))
+    func snapScrollingHStack(_ snapMode: SnapScrollingHStack.SnapMode, items: Int, itemWidth: CGFloat, spacing: CGFloat) -> some View {
+        modifier(SnapScrollingHStack(snapMode: snapMode, items: items, itemWidth: itemWidth, itemSpacing: spacing))
     }
 }

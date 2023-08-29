@@ -1,5 +1,5 @@
 //
-//  AppDetailHeaderScroll.swift
+//  AppInfoBadges.swift
 //  code-interview-ios-itunes-search
 //
 //  Created by Martin on 2023/08/24.
@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-struct AppInfoBadge<M, B>: View where M : View, B : View {
-    let top: String
-    let middle: () -> M
-    let bottom: () -> B
+fileprivate struct Badge<Middle, Bottom>: View where Middle: View, Bottom: View {
+    private let top: String
+    private let middle: () -> Middle
+    private let bottom: () -> Bottom
     
     private let minWidth: CGFloat = 100
     private let maxWidth: CGFloat = 105
     
-    init(title top: String, middle: @escaping () -> M, bottom: @escaping () -> B) {
+    init(
+        title top: String,
+        middle: @escaping () -> Middle,
+        bottom: @escaping () -> Bottom
+    ) {
         self.top = top
         self.middle = middle
         self.bottom = bottom
@@ -34,22 +38,39 @@ struct AppInfoBadge<M, B>: View where M : View, B : View {
         }
         .frame(minWidth: minWidth, maxWidth: maxWidth)
         .foregroundColor(.secondary)
-      
+        
     }
 }
 
-struct AppInfoBadgesScroll: View {
-    let app: Application
+struct AppInfoBadges: View {
+    
+    private let averageUserRating: Double
+    private let userRatingCount: Int
+    private let contentAdvisoryRating: String
+    private let sellerName: String
+    
+    init(
+        averageUserRating: Double,
+        userRatingCount: Int,
+        contentAdvisoryRating: String,
+        sellerName: String
+    ) {
+        self.averageUserRating = averageUserRating
+        self.userRatingCount = userRatingCount
+        self.contentAdvisoryRating = contentAdvisoryRating
+        self.sellerName = sellerName
+    }
+    
     var body: some View {
         ScrollView(.horizontal) {
             VStack {
                 Divider()
                 HStack(spacing: .zero) {
-                    userRating(rating: app.averageUserRating, count: app.userRatingCount)
+                    userRating(rating: averageUserRating, count: userRatingCount)
                     
-                    contentAdvisoryRating(rating: app.contentAdvisoryRating)
+                    contentAdvisoryRating(rating: contentAdvisoryRating)
                     
-                    sellerInfo(name: app.sellerName)
+                    sellerInfo(name: sellerName)
                     
                     languageInfo()
                 }
@@ -59,28 +80,29 @@ struct AppInfoBadgesScroll: View {
     }
 }
 
-extension AppInfoBadgesScroll {
-    private func userRatingString(_ rating: Double) -> String {
+// MARK: - All Badges
+extension AppInfoBadges {
+    private func userRatingScore(_ number: Double) -> String {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 1
-        return formatter.string(from: rating as NSNumber) ?? "0.0"
+        return formatter.string(from: number as NSNumber) ?? "0.0"
     }
-   
+    
     @ViewBuilder
-    func userRating(rating: Double, count: Int) -> some View {
-        AppInfoBadge(title: "\(count)개 의 평가") {
-            Text(userRatingString(rating))
+    private func userRating(rating: Double, count: Int) -> some View {
+        Badge(title: "\(count.formatPeopleNumber())개의 평가") {
+            Text(userRatingScore(rating))
         } bottom: {
             FiveStarRating(rating: Decimal(rating))
                 .padding(.horizontal)
-                
+            
         }
         cellDivider
     }
     
     @ViewBuilder
-    func contentAdvisoryRating(rating: String) -> some View {
-        AppInfoBadge(title: "연령") {
+    private func contentAdvisoryRating(rating: String) -> some View {
+        Badge(title: "연령") {
             Text(rating)
         } bottom: {
             Text("세")
@@ -90,8 +112,8 @@ extension AppInfoBadgesScroll {
     }
     
     @ViewBuilder
-    func sellerInfo(name: String) -> some View {
-        AppInfoBadge(title: "개발자") {
+    private func sellerInfo(name: String) -> some View {
+        Badge(title: "개발자") {
             Image(systemName: "person.crop.square")
         } bottom: {
             Text(name)
@@ -100,9 +122,8 @@ extension AppInfoBadgesScroll {
         cellDivider
     }
     
-    @ViewBuilder
-    func languageInfo() -> some View {
-        AppInfoBadge(title: "언어") {
+    private func languageInfo() -> some View {
+        Badge(title: "언어") {
             Text("KO")
         } bottom: {
             Text("한국어")
@@ -110,18 +131,13 @@ extension AppInfoBadgesScroll {
     }
 }
 
-
-extension AppInfoBadgesScroll {
+// MARK: - Divider
+extension AppInfoBadges {
     private var dividerHeight: CGFloat { 30 }
     
-    var cellDivider: some View {
+    private var cellDivider: some View {
         Divider()
             .frame(height: dividerHeight)
     }
 }
 
-struct AppDetailHeaderScroll_Previews: PreviewProvider {
-    static var previews: some View {
-        AppInfoBadgesScroll(app: Application.sample)
-    }
-}

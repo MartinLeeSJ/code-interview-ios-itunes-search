@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AppDescription: View {
-    let description: String
-    let sellerName: String
+    private let description: String
+    private let sellerName: String
     
     init(_ description: String, sellerName: String) {
         self.description = description
@@ -40,7 +40,7 @@ struct AppDescription: View {
         } label: {
             HStack(alignment: .center) {
                 VStack(alignment: .leading) {
-                    Text("Apple")
+                    Text(sellerName)
                         .foregroundColor(.blue)
                     Text("개발자")
                         .font(.caption)
