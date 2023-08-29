@@ -57,23 +57,30 @@ extension SearchResultCell {
 
 // MARK: - 앱 스크린샷
 extension SearchResultCell {
+    
     private var screenShotUrlsPrefix: [String] {
-        guard let first = app.screenshotUrls.first else { return [] }
-        //첫번째 사진이 Landscape일 경우 첫번째 사진 URL String만 배열에 담아 내보낸다.
-        guard knowIsPortraitURLImage(of: URL(string: first)) else { return [first] }
+        guard let firstUrl = app.screenshotUrls.first else { return [] }
         
+        //첫번째 사진이 Portrait이 아니라 Landscape일 경우 첫번째 사진 URL String만 배열에 담아 내보낸다.
+        guard let isPortraitImage = URL(string: firstUrl)?.isPortraitImage(),
+              isPortraitImage == true
+        else {
+            return [firstUrl]
+        }
+        
+        //스크린샷이 3장이 넘지 않을 경우 그대로 내보낸다
         guard app.screenshotUrls.count >= 3 else {
             return app.screenshotUrls
         }
         
+        //스크린샷이 3장이 넘을 경우 앞에서 3가지의 url만 내보낸다.
         return Array(app.screenshotUrls.prefix(upTo: 3))
     }
     
-    private func knowIsPortraitURLImage(of url: URL?) -> Bool {
-        if let size = url?.itunesScreenShotSize() {
-            return size.width < size.height
-        }
-        return true
+    
+    private func basicImageSize(of url: URL?) -> CGSize {
+        guard let isPortraitImage = url?.isPortraitImage() else { return CGSize(width: 1, height: 2) }
+        return isPortraitImage ? CGSize(width: 1, height: 2) : CGSize(width: 2, height: 1)
     }
     
     private var gridColumns: Array<GridItem> {
@@ -89,8 +96,7 @@ extension SearchResultCell {
         LazyVGrid(columns: gridColumns) {
             ForEach(screenShotUrlsPrefix, id: \.self) { urlString in
                 let url: URL? = URL(string: urlString)
-                let basicSize: CGSize = knowIsPortraitURLImage(of: url) ? CGSize(width: 1, height: 2) : CGSize(width: 2, height: 1)
-                let imageSize: CGSize = URL(string: urlString)?.itunesScreenShotSize() ?? basicSize
+                let imageSize: CGSize = url?.itunesScreenShotSize() ?? basicImageSize(of: url)
                 
                 CachedAsyncImage(url: URL(string: urlString)) { phase in
                     switch phase {
@@ -103,6 +109,7 @@ extension SearchResultCell {
                     case .empty:
                         screenShotPlaceHolder(size: imageSize)
                             .overlay { ProgressView() }
+                        
                     case .failure:
                         screenShotPlaceHolder(size: imageSize)
                             .overlay {

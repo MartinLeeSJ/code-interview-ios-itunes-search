@@ -1,12 +1,12 @@
 //
-//  ScrollingHStackModifier.swift
+//  SnapScrollingHStack.swift
 //  code-interview-ios-itunes-search
 //
 //  Created by Martin on 2023/08/24.
 //
 import SwiftUI
 
-struct ScrollingHStackModifier: ViewModifier {
+struct SnapScrollingHStack: ViewModifier {
     enum SnapMode {
         case center
         case leading
@@ -107,7 +107,7 @@ struct ScrollingHStackModifier: ViewModifier {
 }
 
 extension View {
-    func scrollingHStack(_ snapMode: ScrollingHStackModifier.SnapMode, items: Int, itemWidth: CGFloat, spacing: CGFloat) -> some View {
-        modifier(ScrollingHStackModifier(snapMode: snapMode, items: items, itemWidth: itemWidth, itemSpacing: spacing))
+    func snapScrollingHStack(_ snapMode: SnapScrollingHStack.SnapMode, items: Int, itemWidth: CGFloat, spacing: CGFloat) -> some View {
+        modifier(SnapScrollingHStack(snapMode: snapMode, items: items, itemWidth: itemWidth, itemSpacing: spacing))
     }
 }

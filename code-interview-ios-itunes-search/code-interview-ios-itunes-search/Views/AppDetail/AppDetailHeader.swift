@@ -7,15 +7,31 @@
 
 import SwiftUI
 
-//TODO: - API 연결
 struct AppDetailHeader: View {
-    let app: Application
-    let iconSize: CGFloat
-    private var title: String { app.title }
-    private var iconUrl: String { app.iconUrl }
-    private var sellerName: String { app.sellerName }
-    private var genre: String { app.primaryGenreName }
-    private var url: String { app.url }
+    private let title: String
+    private let iconUrl: String
+    private let sellerName: String
+    private let genre: String
+    private let url: String
+    private let iconSize: CGFloat
+    
+    init(
+        title: String,
+        iconUrl: String,
+        sellerName: String,
+        genre: String,
+        url: String,
+        iconSize: CGFloat
+    ) {
+        self.title = title
+        self.iconUrl = iconUrl
+        self.sellerName = sellerName
+        self.genre = genre
+        self.url = url
+        self.iconSize = iconSize
+    }
+    
+    
     
     var body: some View {
         HStack(alignment: .center, spacing: .spacing(multiplier: 2)) {
@@ -42,7 +58,15 @@ struct AppDetailHeader: View {
 
 struct AppDetailHeader_Previews: PreviewProvider {
     static var previews: some View {
-        AppDetailHeader(app: Application.sample, iconSize: 100)
+        let sample = Application.sample
+        AppDetailHeader(
+            title: sample.title,
+            iconUrl: sample.iconUrl,
+            sellerName: sample.sellerName,
+            genre: sample.primaryGenreName,
+            url: sample.url,
+            iconSize: 100
+        )
             
     }
 }
