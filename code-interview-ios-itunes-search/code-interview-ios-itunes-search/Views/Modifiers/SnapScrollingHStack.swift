@@ -30,7 +30,8 @@ struct SnapScrollingHStack: ViewModifier {
         self.initialIndex = initialIndex
         
         // 전체의 너비를 구한다.
-        let contentWidth: CGFloat = CGFloat(items) * itemWidth + CGFloat(items - 1) * itemSpacing
+//        let contentWidth: CGFloat = CGFloat(items) * itemWidth + CGFloat(items - 1) * itemSpacing
+        let contentWidth = Self.contentWidth(items: items, width: itemWidth, spacing: itemSpacing)
         let screenWidth = UIScreen.main.bounds.width
         
         // 전체 너비의 절반을 오른쪽으로 움직이고
@@ -46,6 +47,11 @@ struct SnapScrollingHStack: ViewModifier {
         self._dragOffset = State(initialValue: 0)
     }
     
+
+    private static func contentWidth(items: Int, width: CGFloat, spacing: CGFloat) -> CGFloat {
+        CGFloat(items) * width + CGFloat(items - 1) * spacing
+    }
+    
     func body(content: Content) -> some View {
         content
             .offset(x: scrollOffset + dragOffset, y: 0)
@@ -56,15 +62,16 @@ struct SnapScrollingHStack: ViewModifier {
                     }
                     .onEnded { event in
                         // Scroll to where user dragged
+                        print(event.translation.width)
                         scrollOffset += event.translation.width
                  
                         dragOffset = 0
                         
                         // Now calculate which item to snap to
-                        let contentWidth: CGFloat = CGFloat(items) * itemWidth + CGFloat(items - 1) * itemSpacing
+                        let contentWidth = Self.contentWidth(items: items, width: itemWidth, spacing: itemSpacing)
                         let screenWidth = UIScreen.main.bounds.width
                         
-                        // Center position of current offset
+                        // contentWidth의 가운데를 기점으로 스크롤 오프셋 이동
                         let center = scrollOffset  + (contentWidth / 2.0)
                         
                         // Calculate which item we are closest to using the defined size
@@ -105,6 +112,8 @@ struct SnapScrollingHStack: ViewModifier {
             )
     }
 }
+
+
 
 extension View {
     func snapScrollingHStack(_ snapMode: SnapScrollingHStack.SnapMode, items: Int, itemWidth: CGFloat, spacing: CGFloat) -> some View {
