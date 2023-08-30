@@ -97,11 +97,8 @@ final class SearchViewModel: ObservableObject {
             parameters: parameters,
             encoder: encoder)
         .responseDecodable(of: AppResponse.self) { [weak self] response in
-            switch response.result {
-            case .success(let results):
+            if case .success(let results) = response.result {
                 self?.searchResults = results.applications
-            case .failure(let error):
-                print(error)
             }
             self?.setIsLoaded(to: true)
         }
