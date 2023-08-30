@@ -23,7 +23,7 @@ extension UserDefaults {
     }
     
     static func memorizeSearchHistroy(_ newValue: String) {
-        var history: [String] = Self.searchHistory
+        let history: [String] = Self.searchHistory
         
         var setLength: Int = min(history.count, HistoryKey.maxCount - 1)
         setLength = max(0, setLength)

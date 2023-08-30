@@ -17,7 +17,7 @@ struct SearchView: View {
                 if viewModel.isSubmitted {
                     SearchResultView(viewModel: viewModel)
                 } else {
-                    SearchHistoryView(viewModel: viewModel)
+                    SearchHistoryList(viewModel: viewModel)
                 }
             }
             .padding()

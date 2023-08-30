@@ -32,7 +32,8 @@ struct AppDetailView: View {
                         averageUserRating: app.averageUserRating,
                         userRatingCount: app.userRatingCount,
                         contentAdvisoryRating: app.contentAdvisoryRating,
-                        sellerName: app.sellerName
+                        sellerName: app.sellerName,
+                        languages: app.languages
                     )
                     
                     AppReleaseNotes(

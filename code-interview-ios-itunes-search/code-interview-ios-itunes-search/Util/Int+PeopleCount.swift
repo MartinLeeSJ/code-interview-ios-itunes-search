@@ -1,5 +1,5 @@
 //
-//  Int+NumberFormatter.swift
+//  Int+PeopleCount.swift
 //  code-interview-ios-itunes-search
 //
 //  Created by Martin on 2023/08/28.
@@ -8,7 +8,7 @@
 import Foundation
 
 extension Int {
-    func formatPeopleNumber() -> String {
+    func peopleCountString() -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 1

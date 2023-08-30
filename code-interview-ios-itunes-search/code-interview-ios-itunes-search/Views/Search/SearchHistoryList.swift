@@ -1,5 +1,5 @@
 //
-//  SearchHistoryView.swift
+//  SearchHistoryList.swift
 //  code-interview-ios-itunes-search
 //
 //  Created by Martin on 2023/08/30.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchHistoryView: View {
+struct SearchHistoryList: View {
     @ObservedObject var viewModel: SearchViewModel
     @Environment(\.isSearching) var isSearching
     

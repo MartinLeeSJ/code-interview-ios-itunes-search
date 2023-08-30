@@ -48,17 +48,20 @@ struct AppInfoBadges: View {
     private let userRatingCount: Int
     private let contentAdvisoryRating: String
     private let sellerName: String
+    private let languages: [String]
     
     init(
         averageUserRating: Double,
         userRatingCount: Int,
         contentAdvisoryRating: String,
-        sellerName: String
+        sellerName: String,
+        languages: [String]
     ) {
         self.averageUserRating = averageUserRating
         self.userRatingCount = userRatingCount
         self.contentAdvisoryRating = contentAdvisoryRating
         self.sellerName = sellerName
+        self.languages = languages
     }
     
     var body: some View {
@@ -90,7 +93,7 @@ extension AppInfoBadges {
     
     @ViewBuilder
     private func userRating(rating: Double, count: Int) -> some View {
-        Badge(title: "\(count.formatPeopleNumber())개의 평가") {
+        Badge(title: "\(count.peopleCountString())개의 평가") {
             Text(userRatingScore(rating))
         } bottom: {
             FiveStarRating(rating: Decimal(rating))
@@ -122,11 +125,24 @@ extension AppInfoBadges {
         cellDivider
     }
     
+    private func mainLanguage(in languageCodes: [String]) -> String {
+        if languageCodes.contains("KO") { return "KO" }
+        return languageCodes.first ?? "KO"
+    }
+    
+    private var mainLanguageName: String {
+        mainLanguage(in:languages).languageNameFromISOCode() ?? "한국어"
+    }
+    
+    private var languagesCountDescription: String {
+        languages.count > 1 ? "+ \(languages.count - 1)개 언어" : (mainLanguageName)
+    }
+    
     private func languageInfo() -> some View {
         Badge(title: "언어") {
-            Text("KO")
+            Text(mainLanguage(in:languages))
         } bottom: {
-            Text("한국어")
+            Text(languagesCountDescription)
         }
     }
 }
