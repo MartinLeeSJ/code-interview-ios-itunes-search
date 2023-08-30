@@ -57,9 +57,12 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func memorizeSearchQuery(_ string: String) {
-        if let histroy = userDefaults.stringArray(forKey: historyKey) {
-            let setLength: Int = histroy.count > maxHistoryCount ? maxHistoryCount : histroy.count
-            var historySet: Set<String> = Set(histroy.prefix(upTo: setLength - 2))
+        if let history = userDefaults.stringArray(forKey: historyKey) {
+            var setLength: Int = min(history.count, maxHistoryCount - 1)
+            setLength = max(0, setLength)
+            
+            var historySet: Set<String> = Set(history.prefix(upTo: setLength))
+            
             historySet.insert(string)
             
             userDefaults.set(Array(historySet), forKey: historyKey)
@@ -86,6 +89,7 @@ final class SearchViewModel: ObservableObject {
             "limit" : "20",
             "country" : "KR"
         ]
+        
         let encoder = URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(spaceEncoding: .plusReplaced))
         
         AF.request(

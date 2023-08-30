@@ -90,8 +90,6 @@ extension Application: Decodable {
             throw ApplicationError.missingData
         }
 
-
-
         self.id = id
         self.title = title
         self.description = description
