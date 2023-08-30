@@ -79,7 +79,7 @@ final class SearchViewModel: ObservableObject {
     
     private func fetchSearchResult(query: String) {
         guard !query.isEmpty else {
-            setSubmit(to: false)
+            self.setSubmit(to: false)
             return
         }
         

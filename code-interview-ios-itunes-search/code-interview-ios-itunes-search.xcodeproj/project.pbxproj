@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B110FE22A9EEA9E003CE089 /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B110FE12A9EEA9E003CE089 /* SearchHistoryView.swift */; };
 		5B14A56C2A9C7EF30023F255 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A56B2A9C7EF30023F255 /* CachedAsyncImage.swift */; };
 		5B14A5732A9CA72D0023F255 /* Int+NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A5722A9CA72D0023F255 /* Int+NumberFormatter.swift */; };
 		5B14A5752A9CF2C60023F255 /* URL+ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A5742A9CF2C60023F255 /* URL+ImageSize.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B110FE12A9EEA9E003CE089 /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
 		5B14A56B2A9C7EF30023F255 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		5B14A5722A9CA72D0023F255 /* Int+NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+NumberFormatter.swift"; sourceTree = "<group>"; };
 		5B14A5742A9CF2C60023F255 /* URL+ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+ImageSize.swift"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			children = (
 				5BDE835D2A9622F0006185E8 /* SearchView.swift */,
 				5BB73A262A9DCF9C008EBF41 /* SearchResultView.swift */,
+				5B110FE12A9EEA9E003CE089 /* SearchHistoryView.swift */,
 				5BDE83622A963AFB006185E8 /* SearchResultCell.swift */,
 			);
 			path = Search;
@@ -390,6 +393,7 @@
 				5B14A5752A9CF2C60023F255 /* URL+ImageSize.swift in Sources */,
 				5B38096A2A9850CF000D20D6 /* AppDescription.swift in Sources */,
 				5BDE838E2A977619006185E8 /* AppIconView.swift in Sources */,
+				5B110FE22A9EEA9E003CE089 /* SearchHistoryView.swift in Sources */,
 				5BDE83882A97565B006185E8 /* Application+Sample.swift in Sources */,
 				5BDE838C2A977302006185E8 /* ScreenShotScroll.swift in Sources */,
 				5BDE83522A96058E006185E8 /* ContentView.swift in Sources */,

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
-    @Environment(\.dismissSearch) private var dismissSearch
     
     var body: some View {
         NavigationStack {
@@ -17,7 +16,7 @@ struct SearchView: View {
                 if viewModel.isSubmitted {
                     SearchResultView(viewModel: viewModel)
                 } else {
-                    searchHistory
+                    SearchHistoryView(viewModel: viewModel)
                 }
             }
             .padding()
@@ -27,47 +26,9 @@ struct SearchView: View {
             .onSubmit(of: .search) {
                 viewModel.setSubmit(to: true)
             }
+            
         }
        
-    }
-}
-
-//MARK: - 검색기록
-extension SearchView {
-    private var historyListRowInsets: EdgeInsets {
-        EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-    }
-    
-    @ViewBuilder
-    var searchHistory: some View {
-        List {
-            HStack {
-                Text("최근 검색어")
-                    .font(.title2.bold())
-                Spacer()
-                Button {
-                    viewModel.deleteSearchHistory()
-                } label: {
-                    Text("기록 삭제")
-                        .foregroundColor(.blue)
-                }
-            }
-            .listRowInsets(historyListRowInsets)
-            .listRowSeparator(.hidden)
-            
-            ForEach(viewModel.searchHistory, id: \.self) { history in
-                Button {
-                    viewModel.setSearchQuery(history)
-                    viewModel.setSubmit(to: true)
-                } label: {
-                    Text(history)
-                        .font(.title3)
-                        .foregroundColor(.blue)
-                }
-                .listRowInsets(historyListRowInsets)
-            }
-        }
-        .listStyle(.plain)
     }
 }
 
