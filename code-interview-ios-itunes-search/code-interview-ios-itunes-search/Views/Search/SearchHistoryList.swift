@@ -11,12 +11,6 @@ struct SearchHistoryList: View {
     @ObservedObject var viewModel: SearchViewModel
     @Environment(\.isSearching) var isSearching
     
-    private var exposedHistory: [String] {
-        var length: Int
-        length = min(10, viewModel.searchHistory.count - 1)
-        length = max(length, 0)
-        return Array(viewModel.searchHistory.prefix(upTo: length))
-    }
     private let historyListRowInsets: EdgeInsets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
     
     var body: some View {
@@ -35,7 +29,7 @@ struct SearchHistoryList: View {
             .listRowInsets(historyListRowInsets)
             .listRowSeparator(.hidden)
             
-            ForEach(exposedHistory, id: \.self) { history in
+            ForEach(viewModel.searchHistory, id: \.self) { history in
                 Button {
                     viewModel.setSearchQuery(history)
                     viewModel.setIsSubmitted(to: true)
