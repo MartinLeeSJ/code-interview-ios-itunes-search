@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B110FE22A9EEA9E003CE089 /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B110FE12A9EEA9E003CE089 /* SearchHistoryView.swift */; };
+		5B110FE42A9F276C003CE089 /* UserDefaults+SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B110FE32A9F276C003CE089 /* UserDefaults+SearchHistory.swift */; };
 		5B14A56C2A9C7EF30023F255 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A56B2A9C7EF30023F255 /* CachedAsyncImage.swift */; };
 		5B14A5732A9CA72D0023F255 /* Int+NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A5722A9CA72D0023F255 /* Int+NumberFormatter.swift */; };
 		5B14A5752A9CF2C60023F255 /* URL+ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A5742A9CF2C60023F255 /* URL+ImageSize.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		5B110FE12A9EEA9E003CE089 /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
+		5B110FE32A9F276C003CE089 /* UserDefaults+SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+SearchHistory.swift"; sourceTree = "<group>"; };
 		5B14A56B2A9C7EF30023F255 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		5B14A5722A9CA72D0023F255 /* Int+NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+NumberFormatter.swift"; sourceTree = "<group>"; };
 		5B14A5742A9CF2C60023F255 /* URL+ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+ImageSize.swift"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				5B3809712A98AB3B000D20D6 /* String+DateFormat.swift */,
 				5B14A5722A9CA72D0023F255 /* Int+NumberFormatter.swift */,
 				5B14A5742A9CF2C60023F255 /* URL+ImageSize.swift */,
+				5B110FE32A9F276C003CE089 /* UserDefaults+SearchHistory.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				5BDE83882A97565B006185E8 /* Application+Sample.swift in Sources */,
 				5BDE838C2A977302006185E8 /* ScreenShotScroll.swift in Sources */,
 				5BDE83522A96058E006185E8 /* ContentView.swift in Sources */,
+				5B110FE42A9F276C003CE089 /* UserDefaults+SearchHistory.swift in Sources */,
 				5B38096E2A988228000D20D6 /* AppReleaseNotes.swift in Sources */,
 				5B14A56C2A9C7EF30023F255 /* CachedAsyncImage.swift in Sources */,
 				5BDE83722A971458006185E8 /* AppResponse.swift in Sources */,

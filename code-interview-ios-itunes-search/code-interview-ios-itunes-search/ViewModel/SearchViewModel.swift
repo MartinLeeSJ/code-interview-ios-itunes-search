@@ -13,20 +13,16 @@ final class SearchViewModel: ObservableObject {
     @Published var searchQuery: String = ""
     @Published var searchResults: [Application] = []
     
-    @Published var searchHistory: [String] = []
+    @Published var searchHistory: [String] = UserDefaults.searchHistory
     @Published var searchSuggestions: [String] = []
     
     @Published var isLoaded: Bool = false
     @Published var isSubmitted: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
-    private let historyKey = "history"
-    private let maxHistoryCount: Int = 20
-    private let userDefaults = UserDefaults.standard
+    
     
     init() {
-        self.searchHistory = UserDefaults.standard.stringArray(forKey: historyKey) ?? []
-        
         $searchQuery
             .sink { [weak self] query in
                 self?.setIsSubmitted(to: false)
@@ -60,29 +56,17 @@ final class SearchViewModel: ObservableObject {
     }
     
     func deleteSearchHistory() {
-        userDefaults.set(Array<String>(), forKey: historyKey)
+        UserDefaults.deleteSearchHistory()
+        setSearchHistory()
+    }
+    
+    private func memorizeSearchQuery(_ string: String) {
+        UserDefaults.memorizeSearchHistroy(string)
         setSearchHistory()
     }
     
     private func setSearchHistory() {
-        searchHistory = userDefaults.stringArray(forKey: historyKey) ?? []
-    }
-    
-    private func memorizeSearchQuery(_ string: String) {
-        if let history = userDefaults.stringArray(forKey: historyKey) {
-            var setLength: Int = min(history.count, maxHistoryCount - 1)
-            setLength = max(0, setLength)
-            
-            var historySet: Set<String> = Set(history.prefix(upTo: setLength))
-            
-            historySet.insert(string)
-            
-            userDefaults.set(Array(historySet), forKey: historyKey)
-        } else {
-            userDefaults.set([string], forKey: historyKey)
-        }
-        
-        setSearchHistory()
+        searchHistory = UserDefaults.searchHistory
     }
     
     private func filterSearchSuggestions(query: String) {
