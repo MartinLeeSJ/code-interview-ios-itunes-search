@@ -9,12 +9,9 @@ import SwiftUI
 
 struct SearchResultView: View {
     @ObservedObject var viewModel: SearchViewModel
-    @State private var emptyResultOpacity: Double = 0
     
     var body: some View {
-        if viewModel.searchResults.isEmpty {
-            emptyResult
-        } else {
+        ZStack {
             ScrollView {
                 LazyVStack(spacing: .spacing(multiplier: 4)) {
                     ForEach(viewModel.searchResults, id: \.self) { app in
@@ -24,6 +21,12 @@ struct SearchResultView: View {
             }
             .scrollIndicators(.never)
         }
+        .overlay(alignment: .center) {
+            if viewModel.searchResults.isEmpty {
+                emptyResult
+            }
+        }
+        .opacity(viewModel.isLoaded ? 1 : 0)
     }
     
     private var emptyResult: some View {
@@ -35,14 +38,6 @@ struct SearchResultView: View {
                 .font(.body)
                 .foregroundColor(.secondary)
             Spacer()
-        }
-        .opacity(emptyResultOpacity)
-        .task {
-            emptyResultOpacity = 0
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                emptyResultOpacity = 1
-            }
         }
     }
 }

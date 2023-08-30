@@ -24,7 +24,7 @@ struct SearchView: View {
             .searchable(text: $viewModel.searchQuery, prompt: "App Store")
             .searchSuggestions(searchSuggestionList)
             .onSubmit(of: .search) {
-                viewModel.setSubmit(to: true)
+                viewModel.setIsSubmitted(to: true)
             }
             
         }
@@ -37,10 +37,13 @@ extension SearchView {
     @ViewBuilder
     func searchSuggestionList() -> some View {
         if !viewModel.isSubmitted {
-            ForEach(viewModel.searchResults, id: \.self) { app in
-                Label(app.title, systemImage: "magnifyingglass")
-                    .foregroundColor(.secondary)
-                    .searchCompletion(app.title)
+            ForEach(viewModel.searchSuggestions, id: \.self) { suggestion in
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.secondary)
+                    Text(suggestion)
+                }
+                .searchCompletion(suggestion)
             }
         }
     }

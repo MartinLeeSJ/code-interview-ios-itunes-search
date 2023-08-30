@@ -32,7 +32,7 @@ struct SearchHistoryView: View {
             ForEach(viewModel.searchHistory, id: \.self) { history in
                 Button {
                     viewModel.setSearchQuery(history)
-                    viewModel.setSubmit(to: true)
+                    viewModel.setIsSubmitted(to: true)
                 } label: {
                     Text(history)
                         .font(.title3)

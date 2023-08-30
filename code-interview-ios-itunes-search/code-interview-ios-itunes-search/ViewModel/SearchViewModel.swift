@@ -12,39 +12,47 @@ import Alamofire
 final class SearchViewModel: ObservableObject {
     @Published var searchQuery: String = ""
     @Published var searchResults: [Application] = []
+    
     @Published var searchHistory: [String] = []
+    @Published var searchSuggestions: [String] = []
+    
+    @Published var isLoaded: Bool = false
     @Published var isSubmitted: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
     private let historyKey = "history"
-    private let maxHistoryCount: Int = 10
+    private let maxHistoryCount: Int = 20
     private let userDefaults = UserDefaults.standard
     
     init() {
         self.searchHistory = UserDefaults.standard.stringArray(forKey: historyKey) ?? []
         
         $searchQuery
-            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-            .removeDuplicates()
             .sink { [weak self] query in
-                self?.searchResults.removeAll()
-                self?.fetchSearchResult(query: query)
+                self?.setIsSubmitted(to: false)
+                self?.filterSearchSuggestions(query: query)
             }
             .store(in: &cancellables)
         
         $isSubmitted
+            .removeDuplicates()
             .sink { [weak self] submitted in
                 guard let self else { return }
                 guard submitted else { return }
                 guard !self.searchQuery.isEmpty else { return }
                 
                 self.memorizeSearchQuery(self.searchQuery)
+                self.fetchSearchResult(query: self.searchQuery)
             }
             .store(in: &cancellables)
     }
     
-    func setSubmit(to bool: Bool) {
+    func setIsSubmitted(to bool: Bool) {
         isSubmitted = bool
+    }
+    
+    private func setIsLoaded(to bool: Bool) {
+        isLoaded = bool
     }
     
     func setSearchQuery(_ string: String) {
@@ -54,6 +62,10 @@ final class SearchViewModel: ObservableObject {
     func deleteSearchHistory() {
         userDefaults.set(Array<String>(), forKey: historyKey)
         setSearchHistory()
+    }
+    
+    private func setSearchHistory() {
+        searchHistory = userDefaults.stringArray(forKey: historyKey) ?? []
     }
     
     private func memorizeSearchQuery(_ string: String) {
@@ -73,13 +85,16 @@ final class SearchViewModel: ObservableObject {
         setSearchHistory()
     }
     
-    private func setSearchHistory() {
-        searchHistory = userDefaults.stringArray(forKey: historyKey) ?? []
+    private func filterSearchSuggestions(query: String) {
+        searchSuggestions = searchHistory.filter { $0.localizedCaseInsensitiveContains(query)}
     }
     
     private func fetchSearchResult(query: String) {
+        setIsLoaded(to: false)
+        searchResults.removeAll()
+        
         guard !query.isEmpty else {
-            self.setSubmit(to: false)
+            self.setIsSubmitted(to: false)
             return
         }
         
@@ -103,6 +118,7 @@ final class SearchViewModel: ObservableObject {
             case .failure(let error):
                 print(error)
             }
+            self?.setIsLoaded(to: true)
         }
     }
     
