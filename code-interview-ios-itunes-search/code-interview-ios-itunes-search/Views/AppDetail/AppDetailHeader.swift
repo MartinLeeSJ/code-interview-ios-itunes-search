@@ -44,7 +44,7 @@ struct AppDetailHeader: View {
                         .foregroundColor(.secondary)
                     Spacer()
                     HStack {
-                        DownloadButton(.borderedProminent) { }
+                        DownloadButton(.borderedProminent)
                         Spacer()
                         ShareLink(item: URL(string: url)!) {
                             Image(systemName: "square.and.arrow.up")

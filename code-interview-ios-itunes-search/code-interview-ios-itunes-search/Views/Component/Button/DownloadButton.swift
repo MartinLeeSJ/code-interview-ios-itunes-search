@@ -13,7 +13,7 @@ struct DownloadButton<Style>: View where Style : PrimitiveButtonStyle {
     let action: () -> Void
     
     
-    init(_ style: Style = .bordered, text: String = "받기", action: @escaping () -> Void) {
+    init(_ style: Style = .bordered, text: String = "받기", action: @escaping () -> Void = {}) {
         self.buttonStyle = style
         self.text = text
         self.action = action
@@ -35,6 +35,6 @@ struct DownloadButton<Style>: View where Style : PrimitiveButtonStyle {
 
 struct DownloadButton_Previews: PreviewProvider {
     static var previews: some View {
-        DownloadButton(action: {print("HI")})
+        DownloadButton(action: {})
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+
 import Alamofire
 
 final class SearchViewModel: ObservableObject {
@@ -70,7 +71,7 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func filterSearchSuggestions(query: String) {
-        searchSuggestions = searchHistory.filter { $0.localizedCaseInsensitiveContains(query)}
+        searchSuggestions = searchHistory.filter { $0.localizedCaseInsensitiveContains(query) }
     }
     
     private func fetchSearchResult(query: String) {

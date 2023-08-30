@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
+    @Environment(\.colorScheme) var scheme
     @StateObject private var viewModel = SearchViewModel()
     
     var body: some View {
@@ -22,6 +23,8 @@ struct SearchView: View {
             .padding()
             .navigationTitle("검색")
             .searchable(text: $viewModel.searchQuery, prompt: "App Store")
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
             .searchSuggestions(searchSuggestionList)
             .onSubmit(of: .search) {
                 viewModel.setIsSubmitted(to: true)
@@ -42,6 +45,7 @@ extension SearchView {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.secondary)
                     Text(suggestion)
+                        .foregroundColor(scheme == .light ? .black : .white)
                 }
                 .searchCompletion(suggestion)
             }

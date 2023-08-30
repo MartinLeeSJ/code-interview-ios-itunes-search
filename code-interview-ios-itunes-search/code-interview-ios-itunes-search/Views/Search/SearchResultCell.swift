@@ -38,7 +38,7 @@ extension SearchResultCell {
             
             Spacer()
             
-            DownloadButton {}
+            DownloadButton()
         }
     }
     
