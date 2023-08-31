@@ -18,7 +18,7 @@ struct ImageBorderLine: ViewModifier {
         content
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(.secondary, lineWidth: 0.2)
+                    .stroke(.gray, lineWidth: 0.2)
             }
     }
 }
