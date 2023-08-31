@@ -63,17 +63,20 @@ struct AppInfoList: View {
     private let fileSizeBytes: String
     private let primaryGenre: String
     private let languages: [String]
+    private let contentAdvisoryRating: String
     
     init(
         sellerName: String,
         fileSizeBytes: String,
         primaryGenreName: String,
-        languages: [String]
+        languages: [String],
+        contentAdvisoryRating: String
     ) {
         self.sellerName = sellerName
         self.fileSizeBytes = fileSizeBytes
         self.primaryGenre = primaryGenreName
         self.languages = languages
+        self.contentAdvisoryRating = contentAdvisoryRating
     }
     
     private var fileSizeDescription: String {
@@ -121,6 +124,11 @@ struct AppInfoList: View {
                 content: languagesDescription,
                 detail: allLanguageString
             )
+            
+            ExpandableListCell(
+                title: "연령 등급",
+                content: contentAdvisoryRating
+            )
         }
         .listStyle(.plain)
     }
@@ -129,11 +137,13 @@ struct AppInfoList: View {
 struct AppInfoList_Previews: PreviewProvider {
     static var previews: some View {
         let sample = Application.sample
+        
         AppInfoList(
             sellerName: sample.sellerName,
             fileSizeBytes: sample.fileSizeBytes,
             primaryGenreName: sample.primaryGenreName,
-            languages: sample.languages
+            languages: sample.languages,
+            contentAdvisoryRating: sample.contentAdvisoryRating
         )
     }
 }

@@ -53,7 +53,8 @@ struct AppDetailView: View {
                         sellerName: app.sellerName,
                         fileSizeBytes: app.fileSizeBytes,
                         primaryGenreName: app.primaryGenreName,
-                        languages: app.languages
+                        languages: app.languages,
+                        contentAdvisoryRating: app.contentAdvisoryRating
                     )
                 }
                 .padding()
