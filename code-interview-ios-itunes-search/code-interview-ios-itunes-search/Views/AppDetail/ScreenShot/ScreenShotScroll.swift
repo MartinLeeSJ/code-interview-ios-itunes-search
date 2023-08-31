@@ -49,10 +49,7 @@ struct ScreenShotScroll: View {
                                 .frame(width: imageWidth)
                         }
                     }
-                    .overlay {
-                        RoundedRectangle(cornerRadius: imageCornerRadius)
-                            .stroke(.secondary, lineWidth: 0.1)
-                    }
+                    .imageBorderLine(cornerRadius: imageCornerRadius)
                 }
             }
             .snapScrollingHStack(

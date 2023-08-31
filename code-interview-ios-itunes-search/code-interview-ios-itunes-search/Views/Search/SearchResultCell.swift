@@ -128,6 +128,7 @@ extension SearchResultCell {
                             }
                     }
                 }
+                .imageBorderLine(cornerRadius: gridCellCornerRadius)
             }
         }
     }

@@ -18,6 +18,7 @@ struct AppReleaseNotes: View {
     
     private var releaseDateString: String {
         let formatter = RelativeDateTimeFormatter()
+        formatter.locale = Locale(identifier: "KO")
         formatter.dateTimeStyle = .named
         formatter.unitsStyle = .full
         return formatter.localizedString(for: currentVersionReleaseDate, relativeTo: Date.now)

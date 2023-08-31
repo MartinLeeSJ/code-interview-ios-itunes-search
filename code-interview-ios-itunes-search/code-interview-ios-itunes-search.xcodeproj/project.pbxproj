@@ -14,6 +14,7 @@
 		5B14A5732A9CA72D0023F255 /* Int+PeopleCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A5722A9CA72D0023F255 /* Int+PeopleCount.swift */; };
 		5B14A5752A9CF2C60023F255 /* URL+ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B14A5742A9CF2C60023F255 /* URL+ImageSize.swift */; };
 		5B2CFC142AA02E5200B71A76 /* AppInfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CFC132AA02E5200B71A76 /* AppInfoList.swift */; };
+		5B2CFC162AA03C9B00B71A76 /* ImageBorderLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CFC152AA03C9B00B71A76 /* ImageBorderLine.swift */; };
 		5B3809672A984E0C000D20D6 /* CGFloat+Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */; };
 		5B38096A2A9850CF000D20D6 /* AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3809692A9850CF000D20D6 /* AppDescription.swift */; };
 		5B38096C2A9871BA000D20D6 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38096B2A9871BA000D20D6 /* ExpandableText.swift */; };
@@ -64,6 +65,7 @@
 		5B14A5722A9CA72D0023F255 /* Int+PeopleCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+PeopleCount.swift"; sourceTree = "<group>"; };
 		5B14A5742A9CF2C60023F255 /* URL+ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+ImageSize.swift"; sourceTree = "<group>"; };
 		5B2CFC132AA02E5200B71A76 /* AppInfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoList.swift; sourceTree = "<group>"; };
+		5B2CFC152AA03C9B00B71A76 /* ImageBorderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBorderLine.swift; sourceTree = "<group>"; };
 		5B3809662A984E0C000D20D6 /* CGFloat+Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Spacing.swift"; sourceTree = "<group>"; };
 		5B3809692A9850CF000D20D6 /* AppDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDescription.swift; sourceTree = "<group>"; };
 		5B38096B2A9871BA000D20D6 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				5BDE83942A9782B2006185E8 /* SnapScrollingHStack.swift */,
+				5B2CFC152AA03C9B00B71A76 /* ImageBorderLine.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				5B38096E2A988228000D20D6 /* AppReleaseNotes.swift in Sources */,
 				5B14A56C2A9C7EF30023F255 /* CachedAsyncImage.swift in Sources */,
 				5BDE83722A971458006185E8 /* AppResponse.swift in Sources */,
+				5B2CFC162AA03C9B00B71A76 /* ImageBorderLine.swift in Sources */,
 				5BDE835E2A9622F0006185E8 /* SearchView.swift in Sources */,
 				5B14A5732A9CA72D0023F255 /* Int+PeopleCount.swift in Sources */,
 				5BDE836D2A96FCF1006185E8 /* AppInfoBadges.swift in Sources */,

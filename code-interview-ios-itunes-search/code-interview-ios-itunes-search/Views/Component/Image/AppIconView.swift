@@ -66,11 +66,7 @@ struct AppIconView: View {
                 }
             }
         }
-        .overlay {
-            RoundedRectangle(cornerRadius: iconRadius)
-                .stroke(.gray, lineWidth: 0.5)
-        }
-
+        .imageBorderLine(cornerRadius: iconRadius)
     }
 }
 
