@@ -88,9 +88,10 @@ extension SearchResultCell {
     
     private var gridColumns: Array<GridItem> {
         // screenShotUrlsPrefix의 길이가 1인 경우에만 count가 1
-        Array(
+        let screenShotCount: Int = prefixOfScreenShotUrls(app.screenshotUrls).count
+        return Array(
             repeating: .init(.flexible(), spacing: gridSpacing),
-            count: prefixOfScreenShotUrls(app.screenshotUrls).count == 1 ? 1 : 3
+            count: screenShotCount == 1 ? 1 : 3
         )
     }
     

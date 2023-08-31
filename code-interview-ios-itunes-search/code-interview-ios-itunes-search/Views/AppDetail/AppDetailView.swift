@@ -48,6 +48,13 @@ struct AppDetailView: View {
                         app.description,
                         sellerName: app.sellerName
                     )
+                    
+                    AppInfoList(
+                        sellerName: app.sellerName,
+                        fileSizeBytes: app.fileSizeBytes,
+                        primaryGenreName: app.primaryGenreName,
+                        languages: app.languages
+                    )
                 }
                 .padding()
             }

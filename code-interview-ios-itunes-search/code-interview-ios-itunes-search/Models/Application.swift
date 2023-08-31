@@ -23,7 +23,6 @@ struct Application: Identifiable, Hashable {
     var appletvScreenshotUrls: [String]
     
     var primaryGenreName: String 
-    var genres: [String]
     var languages: [String]
     var fileSizeBytes: String
     
@@ -35,7 +34,6 @@ struct Application: Identifiable, Hashable {
     var releaseNotes: String
     var currentVersionReleaseDate: Date
     var minimumOsVersion: String
-    var supportedDevices: [String]
 }
 
 
