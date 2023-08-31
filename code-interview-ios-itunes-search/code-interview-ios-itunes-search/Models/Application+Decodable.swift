@@ -21,7 +21,6 @@ extension Application: Decodable {
         case appletvScreenshotUrls
         
         case primaryGenreName
-        case genres
         case languages = "languageCodesISO2A"
         case fileSizeBytes
         
@@ -33,7 +32,6 @@ extension Application: Decodable {
         case releaseNotes
         case currentVersionReleaseDate
         case minimumOsVersion
-        case supportedDevices
     }
     
     init(from decoder: Decoder) throws {
@@ -51,7 +49,6 @@ extension Application: Decodable {
         let rawAppletvScreenshotUrls = try? values.decode([String].self, forKey: .appletvScreenshotUrls)
 
         let rawPrimaryGenreName = try? values.decode(String.self, forKey: .primaryGenreName)
-        let rawGenres = try? values.decode([String].self, forKey: .genres)
         let rawLanguages = try? values.decode([String].self, forKey: .languages)
         let rawFileSizeBytes = try? values.decode(String.self, forKey: .fileSizeBytes)
 
@@ -63,7 +60,7 @@ extension Application: Decodable {
         let rawReleaseNotes = try? values.decode(String.self, forKey: .releaseNotes)
         let rawCurrentVersionReleaseDate = try? values.decode(String.self, forKey: .currentVersionReleaseDate)
         let rawMinimumOsVersion = try? values.decode(String.self, forKey: .minimumOsVersion)
-        let rawSupportedDevices = try? values.decode([String].self, forKey: .supportedDevices)
+        
 
 
         guard let id = rawId,
@@ -76,7 +73,6 @@ extension Application: Decodable {
               let ipadScreenshotUrls = rawIpadScreenshotUrls,
               let appletvScreenshotUrls = rawAppletvScreenshotUrls,
               let primaryGenreName = rawPrimaryGenreName,
-              let genres = rawGenres,
               let languages = rawLanguages,
               let fileSizeBytes = rawFileSizeBytes,
               let contentAdvisoryRating = rawContentAdvisoryRating,
@@ -85,12 +81,9 @@ extension Application: Decodable {
               let version = rawVersion,
               let releaseNotes = rawReleaseNotes,
               let currentVersionReleaseDate = rawCurrentVersionReleaseDate,
-              let minimumOsVersion = rawMinimumOsVersion,
-              let supportedDevices = rawSupportedDevices else {
+              let minimumOsVersion = rawMinimumOsVersion else {
             throw ApplicationError.missingData
         }
-
-
 
         self.id = id
         self.title = title
@@ -102,7 +95,6 @@ extension Application: Decodable {
         self.ipadScreenshotUrls = ipadScreenshotUrls
         self.appletvScreenshotUrls = appletvScreenshotUrls
         self.primaryGenreName = primaryGenreName
-        self.genres = genres
         self.languages = languages
         self.fileSizeBytes = fileSizeBytes
         self.contentAdvisoryRating = contentAdvisoryRating
@@ -112,6 +104,5 @@ extension Application: Decodable {
         self.releaseNotes = releaseNotes
         self.currentVersionReleaseDate = currentVersionReleaseDate.covertToIso8601Date() ?? Date.now
         self.minimumOsVersion = minimumOsVersion
-        self.supportedDevices = supportedDevices
     }
 }

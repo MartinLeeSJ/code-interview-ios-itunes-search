@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SearchView: View {
+    @Environment(\.colorScheme) var scheme
     @StateObject private var viewModel = SearchViewModel()
-    @Environment(\.dismissSearch) private var dismissSearch
     
     var body: some View {
         NavigationStack {
@@ -17,57 +17,21 @@ struct SearchView: View {
                 if viewModel.isSubmitted {
                     SearchResultView(viewModel: viewModel)
                 } else {
-                    searchHistory
+                    SearchHistoryList(viewModel: viewModel)
                 }
             }
             .padding()
             .navigationTitle("검색")
             .searchable(text: $viewModel.searchQuery, prompt: "App Store")
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
             .searchSuggestions(searchSuggestionList)
             .onSubmit(of: .search) {
-                viewModel.setSubmit(to: true)
+                viewModel.setIsSubmitted(to: true)
             }
+            
         }
        
-    }
-}
-
-//MARK: - 검색기록
-extension SearchView {
-    private var historyListRowInsets: EdgeInsets {
-        EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-    }
-    
-    @ViewBuilder
-    var searchHistory: some View {
-        List {
-            HStack {
-                Text("최근 검색어")
-                    .font(.title2.bold())
-                Spacer()
-                Button {
-                    viewModel.deleteSearchHistory()
-                } label: {
-                    Text("기록 삭제")
-                        .foregroundColor(.blue)
-                }
-            }
-            .listRowInsets(historyListRowInsets)
-            .listRowSeparator(.hidden)
-            
-            ForEach(viewModel.searchHistory, id: \.self) { history in
-                Button {
-                    viewModel.setSearchQuery(history)
-                    viewModel.setSubmit(to: true)
-                } label: {
-                    Text(history)
-                        .font(.title3)
-                        .foregroundColor(.blue)
-                }
-                .listRowInsets(historyListRowInsets)
-            }
-        }
-        .listStyle(.plain)
     }
 }
 
@@ -76,10 +40,14 @@ extension SearchView {
     @ViewBuilder
     func searchSuggestionList() -> some View {
         if !viewModel.isSubmitted {
-            ForEach(viewModel.searchResults, id: \.self) { app in
-                Label(app.title, systemImage: "magnifyingglass")
-                    .foregroundColor(.secondary)
-                    .searchCompletion(app.title)
+            ForEach(viewModel.searchSuggestions, id: \.self) { suggestion in
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.secondary)
+                    Text(suggestion)
+                        .foregroundColor(scheme == .light ? .black : .white)
+                }
+                .searchCompletion(suggestion)
             }
         }
     }

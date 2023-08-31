@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExpandableText: View {
+    @Environment(\.colorScheme) var scheme
     @State private var expanded: Bool = false
     @State private var truncated: Bool = false
    
@@ -69,7 +70,9 @@ struct ExpandableText: View {
         }
         .padding(.horizontal)
         .background {
-            Color.white
+            Group{
+                scheme == .light ? Color.white : Color.black
+            }
                 .blur(radius: 2, opaque: false)
         }
         
